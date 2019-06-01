@@ -26,4 +26,5 @@ public class RegisterFragment1 extends Fragment {
         return inflater.inflate(R.layout.fragment_register_fragment1, container, false);
     }
 
+
 }

@@ -6,11 +6,11 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
-public class AccountManager {
+public class UserManager {
     private DBHelper dbHelper;
     private String TBNAME1;
 
-    public AccountManager(Context context) {
+    public UserManager(Context context) {
         dbHelper = new DBHelper(context);
         TBNAME1 = DBHelper.TB_NAME1;
     }
@@ -18,8 +18,15 @@ public class AccountManager {
     public void add(UserItem item) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
+        values.put("stuno", item.getStuNo());
+        values.put("stuname", item.getStuName());
         values.put("username", item.getUserName());
         values.put("userpwd", item.getUserPwd());
+        values.put("nianji", item.getNianJi());
+        values.put("xueyuan", item.getXueYuan());
+        values.put("major", item.getMajor());
+        values.put("tel", item.getTel());
+        values.put("email", item.getEmail());
         db.insert(TBNAME1, null, values);
         db.close();
     }
@@ -93,6 +100,45 @@ public class AccountManager {
         db.close();
         return userItem;
     }
+
+    public int exist(String uname,String upwd){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(TBNAME1, null, "USERNAME=?", new String[]{String.valueOf(uname)}, null, null, null);
+        Cursor cursor1 = db.query(TBNAME1, null, "USERNAME=?"+" and "+"USERPWD=?",new String[]{uname,upwd}, null, null, null);
+        int result =2;
+        if(cursor!=null && cursor1!=null){
+            result=1;
+            cursor.close();
+        }
+        else if(cursor==null){
+            result=0;
+            cursor.close();
+        }
+        else if(cursor!=null&&cursor1==null){
+            result=-1;
+            cursor.close();
+        }
+
+        db.close();
+        return result;
+    }
+
+    public int exist1(String stuno,String stuna){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(TBNAME1, null, "STUNAME=?"+" and "+"STUNO=?",new String[]{stuno,stuna}, null, null, null);
+        int result =2;
+        if(cursor!=null){
+            result=1;
+            cursor.close();
+        }
+        else if(cursor==null){
+            result=0;
+            cursor.close();
+        }
+        db.close();
+        return result;
+    }
+
 }
 
 

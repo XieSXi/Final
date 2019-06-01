@@ -3,11 +3,14 @@ package com.example.administrator.afinal;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.view.ViewGroup;
 
-public class MyPageAdapter extends FragmentPagerAdapter {
+public class RegisterPageAdapter extends FragmentPagerAdapter {
     private String[] title =new String[]{"注册","完善身份信息"};
 
-    public  MyPageAdapter(FragmentManager manager){
+
+
+    public RegisterPageAdapter(FragmentManager manager){
         super(manager);
     }
 

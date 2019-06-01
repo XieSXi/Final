@@ -3,11 +3,13 @@ package com.example.administrator.afinal;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class DBHelper extends SQLiteOpenHelper {
     private static final int VERSION = 1;
     private static final String DB_NAME = "activityManage.db";
     public static final String TB_NAME1 = "tb_user";
+    public String TAG="db";
 
     public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -19,7 +21,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE "+TB_NAME1+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,USERNAME TEXT,USERPWD TEXT)");
+        db.execSQL("CREATE TABLE "+TB_NAME1+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,STUNO TEXT,STUNAME TEXT,USERNAME TEXT,USERPWD TEXT,NIANJI TEXT,XUEYUAN TEXT,ZHUANYE TEXT,TEL TEXT,EMAIL,TEXT,HOBBY TEXT)");
+        Log.i(TAG,"表已创建");
     }
 
     @Override
