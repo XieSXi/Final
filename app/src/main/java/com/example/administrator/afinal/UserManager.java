@@ -55,8 +55,8 @@ public class UserManager {
             while(cursor.moveToNext()){ //当获得游标之后，它是停留在标题行；是否可以移到下一行，如果下一行有数据就会移到下一行
                 UserItem item = new UserItem();
                 item.setId(cursor.getInt(cursor.getColumnIndex("ID")));//cursor.getColumnIndex("ID")：光标获取ID这一列的索引
-                item.setUserName(cursor.getString(cursor.getColumnIndex("USERNAME")));
-                item.setUserPwd(cursor.getString(cursor.getColumnIndex("USERPWD")));
+                item.setStuNo(cursor.getString(cursor.getColumnIndex("STUNO")));
+                item.setStuName(cursor.getString(cursor.getColumnIndex("STUNAME")));
                 rateList.add(item);
                 //把行数据转化成了对象，转化完之后把当前对象放到列表里面来
             }
@@ -100,6 +100,30 @@ public class UserManager {
         db.close();
         return userItem;
     }
+
+    public UserItem findByUsename(String username){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(TBNAME1, null, "USERNAME=?", new String[]{String.valueOf(username)}, null, null, null);
+        UserItem userItem = null;
+        if(cursor!=null && cursor.moveToFirst()){
+            userItem = new UserItem();
+            userItem.setId(cursor.getInt(cursor.getColumnIndex("ID")));
+            userItem.setUserName(cursor.getString(cursor.getColumnIndex("USERNAME")));
+            userItem.setUserPwd(cursor.getString(cursor.getColumnIndex("USERPWD")));
+            userItem.setStuName(cursor.getString(cursor.getColumnIndex("STUNAME")));
+            userItem.setStuNo(cursor.getString(cursor.getColumnIndex("STUNO")));
+            userItem.setNianJi(cursor.getString(cursor.getColumnIndex("NIANJI")));
+            userItem.setXueYuan(cursor.getString(cursor.getColumnIndex("XUEYUAN")));
+            userItem.setMajor(cursor.getString(cursor.getColumnIndex("MAJOR")));
+            userItem.setTel(cursor.getString(cursor.getColumnIndex("TEL")));
+            userItem.setEmail(cursor.getString(cursor.getColumnIndex("EMAIL")));
+            userItem.setHobby(cursor.getString(cursor.getColumnIndex("HOBBY")));
+            cursor.close();
+        }
+        db.close();
+        return userItem;
+    }
+
 
     public int exist(String uname,String upwd){
         SQLiteDatabase db = dbHelper.getReadableDatabase();

@@ -11,6 +11,8 @@ public class UserItem {
     private String major;
     private String tel;
     private String email;
+    private String hobby;
+
 
 
     public UserItem() {
@@ -23,9 +25,10 @@ public class UserItem {
         this.major ="";
         this.tel = "";
         this.email ="";
+        this.hobby ="";
     }
 
-    public UserItem(String stuNo, String stuName, String userName, String userPwd,String nianJi, String xueYuan,String major, String tel, String email) {
+    public UserItem(String stuNo, String stuName, String userName, String userPwd,String nianJi, String xueYuan,String major, String tel, String email,String hobby) {
         this.stuNo = stuNo;
         this.stuName = stuName;
         this.userName = userName;
@@ -35,6 +38,7 @@ public class UserItem {
         this.major =major;
         this.tel = tel;
         this.email = email;
+        this.hobby= hobby;
     }
 
     public int getId() {
@@ -115,5 +119,13 @@ public class UserItem {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(String hobby) {
+        this.hobby = hobby;
     }
 }

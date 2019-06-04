@@ -9,6 +9,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final int VERSION = 1;
     private static final String DB_NAME = "activityManage.db";
     public static final String TB_NAME1 = "tb_user";
+    public static final String TB_NAME2 = "tb_organization";
     public String TAG="db";
 
     public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -22,7 +23,10 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE "+TB_NAME1+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,STUNO TEXT,STUNAME TEXT,USERNAME TEXT,USERPWD TEXT,NIANJI TEXT,XUEYUAN TEXT,ZHUANYE TEXT,TEL TEXT,EMAIL,TEXT,HOBBY TEXT)");
-        Log.i(TAG,"表已创建");
+        Log.i(TAG,"用户表tb_user已创建");
+        db.execSQL("CREATE TABLE "+TB_NAME2+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,ORGNAME TEXT,ORGRPWD TEXT)");
+        Log.i(TAG,"用户表tb_organization已创建");
+
     }
 
     @Override

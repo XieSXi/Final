@@ -21,7 +21,7 @@ public class Register2Activity extends AppCompatActivity {
     private Spinner nianji;
     private Spinner hobby;
     private TextView state3;
-    public String TAG="register3";
+    public String TAG="register2";
 
     String stuno;String stuna;String userna;String password1;String password2;
     String xueyuan1;String nianji1;String hobby1;String major1;String tel1;String email1;
@@ -61,7 +61,7 @@ public class Register2Activity extends AppCompatActivity {
                 if (xueyuan1.length()>0 && nianji1.length()>0&& hobby1.length()>0&&major1.length()>0&&tel.length()>0&&email1.length()>0) {
                     //把数据写入数据库中
                     UserManager manager =new UserManager(getApplicationContext());
-                    manager.add(new UserItem(stuno,stuna,userna,password1,nianji1,xueyuan1,major1,tel1,email1));
+                    manager.add(new UserItem(stuno,stuna,userna,password1,nianji1,xueyuan1,major1,tel1,email1,hobby1));
                     Log.i(TAG,"该用户数据已写入数据库");
                     state3.setText("注册成功！去登录");
                 }

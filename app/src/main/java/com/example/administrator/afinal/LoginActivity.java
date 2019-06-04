@@ -1,9 +1,13 @@
 package com.example.administrator.afinal;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,7 +50,14 @@ public class LoginActivity extends AppCompatActivity {
                     if (result == 1) {
                         state.setText("登录成功！");
 
+                        SharedPreferences mySharedPreferences= getSharedPreferences("userinfo",Activity.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = mySharedPreferences.edit();
+                        editor.putString("username", username.getText().toString());
+                        editor.commit();
+
                         //跳转到主页面
+
+
 
                     } else if (result == 0) {
                         state.setText("用户名不存在！");
@@ -72,6 +83,26 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.otherlogin,menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==R.id.menu_login){
+            Intent config= new Intent(this,organizationloginActivity.class);//打开另一个Activity
+            startActivity(config);
+        }
+        else if(item.getItemId()==R.id.menu_list){
+            Intent list= new Intent(this,Register2Activity.class);//打开另一个Activity
+            startActivity(list);
+
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }
 
 

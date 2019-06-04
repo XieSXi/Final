@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".organizationloginActivity">
+
 
     <RelativeLayout
         android:id="@+id/rl_loginactivity_top"
@@ -31,42 +37,42 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         >
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/tv_loginactivity_username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/username"
-            android:textSize="20dp" />
-        <EditText
-            android:id="@+id/et_loginactivity_username"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="用户名" />
-    </LinearLayout>
+            android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_loginactivity_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="组    织："
+                android:textSize="20dp" />
+            <EditText
+                android:id="@+id/et_loginactivity_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入组织全名：" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_loginactivity_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:text="密    码：" />
-        <EditText
-            android:id="@+id/et_loginactivity_password"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="登录密码"
-            android:inputType="textPassword"/>
-    </LinearLayout>
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_loginactivity_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="密    钥：" />
+            <EditText
+                android:id="@+id/et_loginactivity_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入官方密钥"
+                android:inputType="textPassword"/>
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -82,12 +88,6 @@
             android:layout_weight="1"
             android:text="@string/loginButton" />
 
-        <Button
-            android:id="@+id/registerButton"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/registerButton" />
     </LinearLayout>
 
     <LinearLayout
@@ -95,17 +95,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/ll_loginactivity_three"
         android:orientation="vertical">
-        <TextView
-            android:layout_below="@+id/ll_loginactivity_three"
-            android:id="@+id/tv_loginactivity_else"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginVertical="30dp"
-            android:text="--------------------第三方登录功能维护升级中--------------------"
-            android:textColor="#B3B3B3"
-            android:gravity="center"
-            />
         <TextView
             android:id="@+id/state"
             android:layout_width="wrap_content"
@@ -120,7 +109,5 @@
 
 
     </LinearLayout>
-
-
 
 </RelativeLayout>

@@ -39,7 +39,7 @@ public class RegisteroldActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registerold);
         ViewPager viewPager  =(ViewPager)findViewById(R.id.viewpager);
-        RegisterPageAdapter pageAdapter =new RegisterPageAdapter(getSupportFragmentManager());
+        ManagePageAdapter pageAdapter =new ManagePageAdapter(getSupportFragmentManager());
         viewPager .setAdapter(pageAdapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);

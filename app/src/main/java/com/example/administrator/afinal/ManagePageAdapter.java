@@ -5,21 +5,21 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.ViewGroup;
 
-public class RegisterPageAdapter extends FragmentPagerAdapter {
-    private String[] title =new String[]{"注册","完善身份信息"};
+public class ManagePageAdapter extends FragmentPagerAdapter {
+    private String[] title =new String[]{"学生信息","组织信息"};
 
 
 
-    public RegisterPageAdapter(FragmentManager manager){
+    public ManagePageAdapter(FragmentManager manager){
         super(manager);
     }
 
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
-            return new RegisterFragment1();
+            return new OneFragment();
         } else{
-            return new RegisterFragment2();
+            return new RegisterFragment1();
         }
     }
 

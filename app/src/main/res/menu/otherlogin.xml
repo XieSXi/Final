@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_login"
+        android:title="活动管理登录" />
+    <item
+        android:id="@+id/menu_list"
+        android:title="数据维护登录" />
+
+
+</menu>
