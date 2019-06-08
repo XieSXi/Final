@@ -11,6 +11,7 @@ public class UserManager {
     private String TBNAME1;
     private String TBNAME2;
     private String TBNAME3;
+    private String TBNAME4;
 
 
     public UserManager(Context context) {
@@ -18,6 +19,7 @@ public class UserManager {
         TBNAME1 = dbHelper.TB_NAME1;
         TBNAME2= dbHelper.TB_NAME2;
         TBNAME3= dbHelper.TB_NAME3;
+        TBNAME4= dbHelper.TB_NAME4;
 
     }
 
@@ -59,6 +61,16 @@ public class UserManager {
         values.put("ORGNAME", orgname);
         values.put("ORGPWD", orgpwd);
         db.insert(TBNAME3, null, values);
+        db.close();
+    }
+
+
+    public void add3(String manaid,String managpwd) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("MANANAME", manaid);
+        values.put("MANAPWD", managpwd);
+        db.insert(TBNAME4, null, values);
         db.close();
     }
 
@@ -231,6 +243,34 @@ public class UserManager {
         db.close();
         return result;
     }
+
+
+
+
+    public int login2 (String mid,String mpwd) {
+        int result =2;
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String sql1 = "select * from tb_manager where MANANAME=? ";
+        String sql2 = "select * from tb_manager where MANANAME=? and MANAPWD=?";
+        Cursor cursor1 = db.rawQuery(sql1, new String[] {mid});
+        Cursor cursor2 = db.rawQuery(sql2, new String[] {mid,mpwd});
+        if (cursor1.moveToFirst()) {
+            if(cursor2.moveToFirst()){
+                result=1;
+            }
+            else{
+                result=-1;
+            }
+            cursor1.close();
+            cursor2.close();
+        }
+        else{
+            result=0;
+        }
+        db.close();
+        return result;
+    }
+
 
 
 

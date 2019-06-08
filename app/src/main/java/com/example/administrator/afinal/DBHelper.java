@@ -6,12 +6,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class DBHelper extends SQLiteOpenHelper {
-    private static final int VERSION = 4;
+    private static final int VERSION = 5;
     private static final String DB_NAME = "activityManage.db";
     public static final String TB_NAME0 = "tb_user";
     public static final String TB_NAME1 = "tb_users";
     public static final String TB_NAME2 = "tb_students";
     public static final String TB_NAME3 = "tb_organization";
+    public static final String TB_NAME4 = "tb_manager";
     public String TAG="database";
 
     public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -30,9 +31,10 @@ public class DBHelper extends SQLiteOpenHelper {
 //        Log.i(TAG,"用户表tb_users已创建");
 //        db.execSQL("CREATE TABLE "+TB_NAME2+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,STUNO TEXT,STUNAME TEXT)");
 //        Log.i(TAG,"用户表tb_students已创建");
-
-        db.execSQL("CREATE TABLE "+TB_NAME3+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,ORGNAME TEXT,ORGPWD TEXT)");
-        Log.i(TAG,"用户表tb_organization已创建");
+//        db.execSQL("CREATE TABLE "+TB_NAME3+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,ORGNAME TEXT,ORGPWD TEXT)");
+//        Log.i(TAG,"用户表tb_organization已创建");
+        db.execSQL("CREATE TABLE "+TB_NAME4+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,MANANAME TEXT,MANAPWD TEXT)");
+        Log.i(TAG,"用户表tb_manager已创建");
     }
 
     @Override

@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(config);
         }
         else if(item.getItemId()==R.id.menu_list){
-            Intent list= new Intent(this,Register2Activity.class);//打开另一个Activity
+            Intent list= new Intent(this,manageLoginActivity.class);//打开另一个Activity
             startActivity(list);
 
 
