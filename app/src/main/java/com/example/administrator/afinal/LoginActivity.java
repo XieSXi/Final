@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                 Log.i(TAG, "用户名：" + uname + "密码：" + upwd);
                 if (uname.length()>0 && upwd .length()>0) {
                     UserManager userManager = new UserManager(LoginActivity.this);
-                    int result = userManager.exist(uname, upwd);
+                    int result = userManager.login(uname, upwd);
                     Log.i(TAG, "登录后验证结果：" + result);
                     if (result == 1) {
                         state.setText("登录成功！");

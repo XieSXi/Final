@@ -48,13 +48,13 @@ public class Register1Activity extends AppCompatActivity {
                 Log.i(TAG, "学号：" +stuno + "姓名：" + stuna);
                 if (stuno.length()>0 && stuna .length()>0) {
                     UserManager userManager = new UserManager(Register1Activity.this);
-                    int result = userManager.exist1(stuno, stuna);
-                    Log.i(TAG, "学籍验证结果：" + result);
+                    int result=userManager.yanzheng(stuna,stuno);
                     if (result == 1) {
                         state1.setText("学籍验证成功！");
                     } else if (result == 0) {
                         state1.setText("学籍验证失败！");
                     }
+
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "无效提交 请输入学号或姓名", Toast.LENGTH_SHORT).show();

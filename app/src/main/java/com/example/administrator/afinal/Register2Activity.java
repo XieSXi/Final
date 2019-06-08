@@ -35,7 +35,7 @@ public class Register2Activity extends AppCompatActivity {
         stuno=bundle.getString("stuno_key");
         stuna=bundle.getString("stuna_key");
         userna=bundle.getString("userna_key");
-        password1=bundle.getString("password_key");
+        password1=bundle.getString("password1_key");
 
         finishbtn=(Button) findViewById(R.id.finish);
         loginbtn=(Button) findViewById(R.id.login);

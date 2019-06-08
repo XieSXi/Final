@@ -9,10 +9,20 @@ import java.util.List;
 public class UserManager {
     private DBHelper dbHelper;
     private String TBNAME1;
+    private String TBNAME2;
+    private String TBNAME3;
+
 
     public UserManager(Context context) {
         dbHelper = new DBHelper(context);
-        TBNAME1 = DBHelper.TB_NAME1;
+        TBNAME1 = dbHelper.TB_NAME1;
+        TBNAME2= dbHelper.TB_NAME2;
+        TBNAME3= dbHelper.TB_NAME3;
+
+    }
+
+    public String a(){
+        return TBNAME1;
     }
 
     public void add(UserItem item) {
@@ -27,9 +37,33 @@ public class UserManager {
         values.put("major", item.getMajor());
         values.put("tel", item.getTel());
         values.put("email", item.getEmail());
+        values.put("hobby", item.getHobby());
         db.insert(TBNAME1, null, values);
         db.close();
     }
+
+    public void add1(UserItem item) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("stuno", item.getStuNo());
+        values.put("stuname", item.getStuName());
+        db.insert(TBNAME2, null, values);
+        db.close();
+    }
+
+
+
+    public void add2(String orgname,String orgpwd) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("ORGNAME", orgname);
+        values.put("ORGPWD", orgpwd);
+        db.insert(TBNAME3, null, values);
+        db.close();
+    }
+
+
+
 
 
     public void addAll(List<UserItem> list){
@@ -147,21 +181,101 @@ public class UserManager {
         return result;
     }
 
-    public int exist1(String stuno,String stuna){
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.query(TBNAME1, null, "STUNAME=?"+" and "+"STUNO=?",new String[]{stuno,stuna}, null, null, null);
+
+    public int login (String uname,String upwd) {
         int result =2;
-        if(cursor!=null){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String sql1 = "select * from tb_users where USERNAME=? ";
+        String sql2 = "select * from tb_users where USERNAME=? and USERPWD=?";
+        Cursor cursor1 = db.rawQuery(sql1, new String[] {uname});
+        Cursor cursor2 = db.rawQuery(sql2, new String[] {uname, upwd});
+        if (cursor1.moveToFirst()) {
+            if(cursor2.moveToFirst()){
+                result=1;
+            }
+            else{
+                result=-1;
+            }
+            cursor1.close();
+            cursor2.close();
+        }
+        else{
+            result=0;
+        }
+        db.close();
+        return result;
+    }
+
+
+
+    public int login1 (String oname,String opwd) {
+        int result =2;
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String sql1 = "select * from tb_organization where ORGNAME=? ";
+        String sql2 = "select * from tb_organization where ORGNAME=? and ORGPWD=?";
+        Cursor cursor1 = db.rawQuery(sql1, new String[] {oname});
+        Cursor cursor2 = db.rawQuery(sql2, new String[] {oname,opwd});
+        if (cursor1.moveToFirst()) {
+            if(cursor2.moveToFirst()){
+                result=1;
+            }
+            else{
+                result=-1;
+            }
+            cursor1.close();
+            cursor2.close();
+        }
+        else{
+            result=0;
+        }
+        db.close();
+        return result;
+    }
+
+
+
+
+//    public int exist1(String stuno,String stuna){
+//        SQLiteDatabase db = dbHelper.getReadableDatabase();
+//        Cursor cursor = db.query(TBNAME1, null, "STUNAME=?"+" and "+"STUNO=?",new String[]{stuno,stuna}, null, null, null);
+//        int result =2;
+//        if(cursor!=null){
+//            result=1;
+//            cursor.close();
+//        }
+//        else if(cursor==null){
+//            result=0;
+//            cursor.close();
+//        }
+//        db.close();
+//        return result;
+//    }
+
+
+    public int yanzheng (String stuna,String stuno) {
+        int result =2;
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String sql = "select * from tb_students where STUNAME=? and STUNO=?";
+        Cursor cursor = db.rawQuery(sql, new String[] {stuna, stuno});
+        if (cursor.moveToFirst()) {
             result=1;
             cursor.close();
         }
-        else if(cursor==null){
+        else{
             result=0;
             cursor.close();
         }
         db.close();
         return result;
     }
+
+
+
+
+
+
+
+
 
 }
 
