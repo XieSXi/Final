@@ -18,23 +18,14 @@ public class orghuodongChakanActivity extends ListActivity {
 
         HdItem item=new HdItem();
 
-        String[] expense_category = new String[] {"发工资", "买衣服"};
-        Log.i("www",""+expense_category [1]);
-        String[] expense_money = new String[] {"30000.00", "1500.00"};
+        getData();
 
-        for (int i = 0; i < expense_category.length; i++)
-        {
-            Map<String, Object> map = new HashMap<>();
-            map.put("expense_category", expense_category[i]);
-            map.put("expense_money", expense_money[i]);
-            listitem.add(map);
-        }
         SimpleAdapter adapter = new SimpleAdapter(this
                 , listitem
-                , R.layout.fragment_one_item
+                , R.layout.activity_orghuodong_chakan_item
                 , new String[]{"id","org", "name", "time","content","place","requests","renshu","attention","train","pay",
                 "yue","ri","shi","fen"}
-                , new int[]{R.id.et_id,R.id.et_name, R.id.et_time, R.id.et_content,R.id.et_place, R.id.et_requests,R.id.et_renshu,
+                , new int[]{R.id.et_id,R.id.et_org,R.id.et_name, R.id.et_time, R.id.et_content,R.id.et_place, R.id.et_requests,R.id.et_renshu,
                 R.id.et_attention, R.id.et_whethertrain,R.id.et_whetherpay,R.id.yue,R.id.ri,R.id.shi,R.id.fen});
 
 
