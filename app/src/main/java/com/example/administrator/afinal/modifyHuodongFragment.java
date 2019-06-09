@@ -1,6 +1,7 @@
 package com.example.administrator.afinal;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -18,6 +19,7 @@ public class modifyHuodongFragment extends Fragment {
     private Button modbtn;
     private EditText hdid;
     private EditText modcontent;
+    private String org;
 
     private Spinner modselect;
 
@@ -43,6 +45,8 @@ public class modifyHuodongFragment extends Fragment {
         modselect=(Spinner) v.findViewById(R.id.select);
         modstate=(TextView)v.findViewById(R.id.state);
 
+        org=getActivity().getSharedPreferences("orginfo", Context.MODE_PRIVATE).getString("orgname", "青协");
+
 
         modbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,15 +57,19 @@ public class modifyHuodongFragment extends Fragment {
                 modcontent1 = modcontent.getText().toString().trim();
                 modselect1 = modselect.getSelectedItem().toString();
 
-                Log.i(TAG, "需要修改的活动ID：" + hdid1 + "修改项：" + modselect1);
+                Log.i(TAG, org+"正在做修改   需要修改的活动ID：" + hdid1 + "修改项：" + modselect1);
                 UserManager manager = new UserManager(getActivity());
                 HdItem item1 = manager.findById(hdid1);
                 if (hdid1.length() > 0 && modcontent1.length() > 0 && modselect1.length() > 0) {
                     //更新数据
-                    int result = manager.yanzhengID(hdid1);
+                    int result = manager.yanzhengID(hdid1,org);
                     if (result == 0) {
                         modstate.setText("找不到这个活动ID！");
-                    } else if (result == 1) {
+                    }
+                    else if(result==-1){
+                        modstate.setText("此活动与您无关！无权修改");
+                    }
+                    else if (result == 1) {
                         if (modselect1.equals("活动名称")) {
                             item1.setHdname(modcontent1);
                             manager.updateHd(item1);

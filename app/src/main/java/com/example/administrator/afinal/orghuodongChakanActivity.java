@@ -1,6 +1,7 @@
 package com.example.administrator.afinal;
 
 import android.app.ListActivity;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.SimpleAdapter;
@@ -12,12 +13,13 @@ import java.util.Map;
 
 public class orghuodongChakanActivity extends ListActivity {
     List<Map<String, Object>> listitem = new ArrayList<>(); //存储数据的数组列表
+    String org;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         HdItem item=new HdItem();
-
+        org=getSharedPreferences("orginfo", Context.MODE_PRIVATE).getString("orgname", "青协");
         getData();
 
         SimpleAdapter adapter = new SimpleAdapter(this
@@ -35,7 +37,7 @@ public class orghuodongChakanActivity extends ListActivity {
 
     private void getData(){
         UserManager manager = new UserManager(this);
-        for (HdItem item : manager.listAll1()) {
+        for (HdItem item : manager.showByOrg( org)) {
             Map<String, Object> map = new HashMap<>();
             map.put("id", item.getId());
             map.put("org", item.getHdorg());

@@ -55,7 +55,9 @@ public class LoginActivity extends AppCompatActivity {
                         editor.putString("username", username.getText().toString());
                         editor.commit();
 
-                        //跳转到主页面
+                        //跳转到活动页面
+                        Intent intent= new Intent(getApplicationContext(),actiActivity.class);//打开另一个Activity
+                        startActivity(intent);
 
 
 

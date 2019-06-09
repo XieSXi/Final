@@ -236,11 +236,12 @@ public class UserManager {
 
     public HdItem findById(String id){
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.query(TBNAME5, null, "ID=?", new String[]{String.valueOf(id)}, null, null, null);
+        Cursor cursor = db.query(TBNAME6, null, "ID=?", new String[]{String.valueOf(id)}, null, null, null);
         HdItem hdItem = null;
         if(cursor!=null && cursor.moveToFirst()){
             hdItem = new HdItem();
             hdItem.setId(cursor.getInt(cursor.getColumnIndex("ID")));
+            hdItem.setHdorg(cursor.getString(cursor.getColumnIndex("HDORG")));
             hdItem.setHdname(cursor.getString(cursor.getColumnIndex("HDNAME")));
             hdItem.setHdtime(cursor.getString(cursor.getColumnIndex("HDTIME")));
             hdItem.setHdcontent(cursor.getString(cursor.getColumnIndex("HDCONTENT")));
@@ -263,6 +264,45 @@ public class UserManager {
     }
 
 
+
+
+    public List<HdItem> showByOrg(String org){
+        List<HdItem> hdList = null;   //很多行数据，每一行数据表示为一个RateItem对象
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(TBNAME6, null, "HDORG=?", new String[]{String.valueOf(org)}, null, null, null);
+        if(cursor!=null){
+            hdList=new ArrayList<HdItem>();
+            while(cursor.moveToNext()) {
+                HdItem hdItem = new HdItem();
+                hdItem.setId(cursor.getInt(cursor.getColumnIndex("ID")));
+                hdItem.setHdorg(cursor.getString(cursor.getColumnIndex("HDORG")));
+                hdItem.setHdname(cursor.getString(cursor.getColumnIndex("HDNAME")));
+                hdItem.setHdtime(cursor.getString(cursor.getColumnIndex("HDTIME")));
+                hdItem.setHdcontent(cursor.getString(cursor.getColumnIndex("HDCONTENT")));
+                hdItem.setHdplace(cursor.getString(cursor.getColumnIndex("HDPLACE")));
+                hdItem.setHdrequests(cursor.getString(cursor.getColumnIndex("HDREQUESTS")));
+                hdItem.setHdrenshu(cursor.getString(cursor.getColumnIndex("HDRENSHU")));
+                hdItem.setHdattention(cursor.getString(cursor.getColumnIndex("ATTENTION")));
+                hdItem.setHdtrain(cursor.getString(cursor.getColumnIndex("TRAIN")));
+                hdItem.setHdpay(cursor.getString(cursor.getColumnIndex("PAY")));
+                hdItem.setHdyue(cursor.getString(cursor.getColumnIndex("HDYUE")));
+                hdItem.setHdri(cursor.getString(cursor.getColumnIndex("HDRI")));
+                hdItem.setHdshi(cursor.getString(cursor.getColumnIndex("HDSHI")));
+                hdItem.setHdfen(cursor.getString(cursor.getColumnIndex("HDFEN")));
+
+                hdList.add(hdItem);
+            }
+
+            cursor.close();
+        }
+        db.close();
+        return hdList;
+    }
+
+
+
+
+
     public HdItem findidByhdname(String huodongname){
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.query(TBNAME6, null, "HDNAME=?", new String[]{String.valueOf(huodongname)}, null, null, null);
@@ -281,6 +321,7 @@ public class UserManager {
     public void updateHd(HdItem item){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
+        values.put("HDORG", item.getHdorg());
         values.put("HDNAME", item.getHdname());
         values.put("HDTIME", item.getHdtime());
         values.put("HDCONTENT",item.getHdcontent());
@@ -295,7 +336,7 @@ public class UserManager {
         values.put("HDSHI",item.getHdshi());
         values.put("HDFEN",item.getHdfen());
 
-        db.update(TBNAME5, values, "ID=?", new String[]{String.valueOf(item.getId())});
+        db.update(TBNAME6, values, "ID=?", new String[]{String.valueOf(item.getId())});
         db.close();
     }
 
@@ -464,19 +505,26 @@ public class UserManager {
         return result;
     }
 
-    public int yanzhengID (String id) {
+    public int yanzhengID (String id,String org) {
         int result =2;
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        String sql = "select * from tb_huodong where ID=?";
-        Cursor cursor = db.rawQuery(sql, new String[] {id});
-        if (cursor.moveToFirst()) {
+        String sql1 = "select * from tb_acti where ID=?";
+        String sql2 = "select * from tb_acti where ID=? and HDORG=?";
+        Cursor cursor1 = db.rawQuery(sql1, new String[] {id});
+        Cursor cursor2 = db.rawQuery(sql2, new String[] {id,org});
+        if (cursor1.moveToFirst()) {
+            if(cursor2.moveToFirst()){
             result=1;
-            cursor.close();
+        }
+            else {
+            result = -1;
+        }
+        cursor1.close();
+        cursor2.close();
         }
         else{
-            result=0;
-            cursor.close();
-        }
+        result = 0;
+    }
         db.close();
         return result;
     }
