@@ -12,6 +12,8 @@ public class UserManager {
     private String TBNAME2;
     private String TBNAME3;
     private String TBNAME4;
+    private String TBNAME5;
+    private String TBNAME6;
 
 
     public UserManager(Context context) {
@@ -20,6 +22,8 @@ public class UserManager {
         TBNAME2= dbHelper.TB_NAME2;
         TBNAME3= dbHelper.TB_NAME3;
         TBNAME4= dbHelper.TB_NAME4;
+        TBNAME5= dbHelper.TB_NAME5;
+        TBNAME6= dbHelper.TB_NAME6;
 
     }
 
@@ -75,6 +79,55 @@ public class UserManager {
     }
 
 
+//    public void add4(String hdname1,String hdtime1,String hdcontent1,String hdplace1,String hdrequests1,String hdrenshu1,
+//                     String hdattention1,String hdtrain1,String hdpay1,String hdyue1,String hdri1,String hdshi1,String hdfen1) {
+//        SQLiteDatabase db = dbHelper.getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put("HDNAME",hdname1);
+//        values.put("HDTIME",hdtime1);
+//        values.put("HDCONTENT",hdcontent1);
+//        values.put("HDPLACE",hdplace1);
+//        values.put("HDREQUESTS",hdrequests1);
+//        values.put("HDRENSHU ",hdrenshu1);
+//        values.put("ATTENTION",hdattention1);
+//        values.put("TRAIN",hdtrain1);
+//        values.put("PAY",hdpay1);
+//        values.put("HDYUE",hdyue1);
+//        values.put("HDRI",hdri1);
+//        values.put("HDSHI",hdshi1);
+//        values.put("HDFEN",hdfen1);
+//
+//        db.insert(TBNAME5, null, values);
+//        db.close();
+//
+//    }
+
+
+
+
+    public void add4(HdItem item) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("HDORG",item.getHdorg());
+        values.put("HDNAME",item.getHdname());
+        values.put("HDTIME",item.getHdtime());
+        values.put("HDCONTENT",item.getHdcontent());
+        values.put("HDPLACE",item.getHdplace());
+        values.put("HDREQUESTS",item.getHdrequests());
+        values.put("HDRENSHU ",item.getHdrenshu());
+        values.put("ATTENTION",item.getHdattention());
+        values.put("TRAIN",item.getHdtrain());
+        values.put("PAY",item.getHdpay());
+        values.put("HDYUE",item.getHdyue());
+        values.put("HDRI",item.getHdri());
+        values.put("HDSHI",item.getHdshi());
+        values.put("HDFEN",item.getHdfen());
+
+        db.insert(TBNAME6, null, values);
+        db.close();
+
+    }
+
 
 
 
@@ -103,6 +156,15 @@ public class UserManager {
                 item.setId(cursor.getInt(cursor.getColumnIndex("ID")));//cursor.getColumnIndex("ID")：光标获取ID这一列的索引
                 item.setStuNo(cursor.getString(cursor.getColumnIndex("STUNO")));
                 item.setStuName(cursor.getString(cursor.getColumnIndex("STUNAME")));
+                item.setUserName(cursor.getString(cursor.getColumnIndex("USERNAME")));
+                item.setUserPwd(cursor.getString(cursor.getColumnIndex("USERPWD")));
+                item.setNianJi(cursor.getString(cursor.getColumnIndex("NIANJI")));
+                item.setXueYuan(cursor.getString(cursor.getColumnIndex("XUEYUAN")));
+                item.setMajor(cursor.getString(cursor.getColumnIndex("MAJOR")));
+                item.setTel(cursor.getString(cursor.getColumnIndex("TEL")));
+                item.setEmail(cursor.getString(cursor.getColumnIndex("EMAIL")));
+                item.setHobby(cursor.getString(cursor.getColumnIndex("HOBBY")));
+
                 rateList.add(item);
                 //把行数据转化成了对象，转化完之后把当前对象放到列表里面来
             }
@@ -111,6 +173,45 @@ public class UserManager {
         db.close();
         return rateList;
     }
+
+
+    public List<HdItem> listAll1(){
+        List<HdItem> hdList = null;   //很多行数据，每一行数据表示为一个RateItem对象
+        SQLiteDatabase db = dbHelper.getReadableDatabase();   //dbHelper = new DBHelper(context); dbHelper是DBHelper类的一个实例，通过这个实例获得数据库访问获得一个只读数据库;
+        Cursor cursor = db.query(TBNAME5, null, null, null, null, null, null);
+        //db.query查询数据 表name后面都是null，是查询所有数据；返回的是一个光标，
+        if(cursor!=null){    //是将数据装载到列表里的过程
+            hdList = new ArrayList<HdItem>(); //List<RateItem> rateList = null,空对象是不能有任何方法的，所以对rateList进行实例化
+            while(cursor.moveToNext()){ //当获得游标之后，它是停留在标题行；是否可以移到下一行，如果下一行有数据就会移到下一行
+                HdItem item = new HdItem();
+                item.setId(cursor.getInt(cursor.getColumnIndex("ID")));//cursor.getColumnIndex("ID")：光标获取ID这一列的索引
+                item.setHdname(cursor.getString(cursor.getColumnIndex("HDNAME")));
+                item.setHdtime(cursor.getString(cursor.getColumnIndex("HDTIME")));
+                item.setHdcontent(cursor.getString(cursor.getColumnIndex("HDCONTENT")));
+                item.setHdplace(cursor.getString(cursor.getColumnIndex("HDPLACE")));
+                item.setHdrequests(cursor.getString(cursor.getColumnIndex("HDREQUESTS")));
+                item.setHdrenshu(cursor.getString(cursor.getColumnIndex("HDRENSHU")));
+                item.setHdattention(cursor.getString(cursor.getColumnIndex("ATTENTION")));
+                item.setHdtrain(cursor.getString(cursor.getColumnIndex("TRAIN")));
+                item.setHdpay(cursor.getString(cursor.getColumnIndex("PAY")));
+                item.setHdyue(cursor.getString(cursor.getColumnIndex("HDYUE")));
+                item.setHdri(cursor.getString(cursor.getColumnIndex("HDRI")));
+                item.setHdshi(cursor.getString(cursor.getColumnIndex("HDSHI")));
+                item.setHdfen(cursor.getString(cursor.getColumnIndex("HDFEN")));
+
+                hdList.add(item);
+                //把行数据转化成了对象，转化完之后把当前对象放到列表里面来
+            }
+            cursor.close();
+        }
+        db.close();
+        return hdList;
+    }
+
+
+
+
+
     public void deleteAll(){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.delete(TBNAME1,null,null);
@@ -132,20 +233,73 @@ public class UserManager {
         db.close();
     }
 
-    public UserItem findById(int id){
+    public HdItem findById(String id){
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.query(TBNAME1, null, "ID=?", new String[]{String.valueOf(id)}, null, null, null);
-        UserItem userItem = null;
+        Cursor cursor = db.query(TBNAME5, null, "ID=?", new String[]{String.valueOf(id)}, null, null, null);
+        HdItem hdItem = null;
         if(cursor!=null && cursor.moveToFirst()){
-            userItem = new UserItem();
-            userItem.setId(cursor.getInt(cursor.getColumnIndex("ID")));
-            userItem.setUserName(cursor.getString(cursor.getColumnIndex("USERNAME")));
-            userItem.setUserPwd(cursor.getString(cursor.getColumnIndex("USERPWD")));
+            hdItem = new HdItem();
+            hdItem.setId(cursor.getInt(cursor.getColumnIndex("ID")));
+            hdItem.setHdname(cursor.getString(cursor.getColumnIndex("HDNAME")));
+            hdItem.setHdtime(cursor.getString(cursor.getColumnIndex("HDTIME")));
+            hdItem.setHdcontent(cursor.getString(cursor.getColumnIndex("HDCONTENT")));
+            hdItem.setHdplace(cursor.getString(cursor.getColumnIndex("HDPLACE")));
+            hdItem.setHdrequests(cursor.getString(cursor.getColumnIndex("HDREQUESTS")));
+            hdItem.setHdrenshu(cursor.getString(cursor.getColumnIndex("HDRENSHU")));
+            hdItem.setHdattention(cursor.getString(cursor.getColumnIndex("ATTENTION")));
+            hdItem.setHdtrain(cursor.getString(cursor.getColumnIndex("TRAIN")));
+            hdItem.setHdpay(cursor.getString(cursor.getColumnIndex("PAY")));
+            hdItem.setHdyue(cursor.getString(cursor.getColumnIndex("HDYUE")));
+            hdItem.setHdri(cursor.getString(cursor.getColumnIndex("HDRI")));
+            hdItem.setHdshi(cursor.getString(cursor.getColumnIndex("HDSHI")));
+            hdItem.setHdfen(cursor.getString(cursor.getColumnIndex("HDFEN")));
+
+
             cursor.close();
         }
         db.close();
-        return userItem;
+        return hdItem;
     }
+
+
+    public HdItem findidByhdname(String huodongname){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(TBNAME6, null, "HDNAME=?", new String[]{String.valueOf(huodongname)}, null, null, null);
+        HdItem hdItem = null;
+        if(cursor!=null && cursor.moveToFirst()){
+            hdItem = new HdItem();
+            hdItem.setId(cursor.getInt(cursor.getColumnIndex("ID")));
+            cursor.close();
+        }
+        db.close();
+        return hdItem ;
+    }
+
+
+
+    public void updateHd(HdItem item){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("HDNAME", item.getHdname());
+        values.put("HDTIME", item.getHdtime());
+        values.put("HDCONTENT",item.getHdcontent());
+        values.put("HDPLACE",item.getHdplace());
+        values.put("HDREQUESTS",item.getHdrequests());
+        values.put("HDRENSHU ",item.getHdrenshu());
+        values.put("ATTENTION",item.getHdattention());
+        values.put("TRAIN",item.getHdtrain());
+        values.put("PAY",item.getHdpay());
+        values.put("HDYUE",item.getHdyue());
+        values.put("HDRI",item.getHdri());
+        values.put("HDSHI",item.getHdshi());
+        values.put("HDFEN",item.getHdfen());
+
+        db.update(TBNAME5, values, "ID=?", new String[]{String.valueOf(item.getId())});
+        db.close();
+    }
+
+
+
 
     public UserItem findByUsename(String username){
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -309,7 +463,22 @@ public class UserManager {
         return result;
     }
 
-
+    public int yanzhengID (String id) {
+        int result =2;
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String sql = "select * from tb_huodong where ID=?";
+        Cursor cursor = db.rawQuery(sql, new String[] {id});
+        if (cursor.moveToFirst()) {
+            result=1;
+            cursor.close();
+        }
+        else{
+            result=0;
+            cursor.close();
+        }
+        db.close();
+        return result;
+    }
 
 
 

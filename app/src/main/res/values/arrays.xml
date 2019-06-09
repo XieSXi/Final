@@ -34,4 +34,87 @@
         <item>公益类</item>
 
     </string-array>
+
+
+    <string-array name="array_time1shi">
+
+        <item>01时</item>
+        <item>02时</item><item>03时</item>
+        <item>04时</item><item>05时</item>
+        <item>06时</item><item>07时</item>
+        <item>08时</item><item>09时</item>
+        <item>10时</item><item>11时</item><item>12时</item><item>13时</item><item>14时</item><item>15时</item>
+        <item>16时</item><item>17时</item><item>18时</item><item>19时</item><item>20时</item><item>21时</item>
+        <item>22时</item><item>23时</item><item>24时</item>
+    </string-array>
+
+
+    <string-array name="array_time1fen">
+
+        <item>01分</item>
+        <item>02分</item><item>03分</item>
+        <item>04分</item><item>05分</item>
+        <item>06分</item><item>07分</item>
+        <item>08分</item><item>09分</item>
+        <item>10分</item><item>11分</item><item>12分</item><item>13分</item><item>14分</item><item>15分</item>
+        <item>16分</item><item>17分</item><item>18分</item><item>19分</item><item>20分</item><item>21分</item>
+        <item>22分</item><item>23分</item><item>24分</item>
+        <item>25分</item><item>26分</item><item>27分</item><item>28分</item><item>29分</item><item>30分</item>
+        <item>31分</item><item>32分</item><item>33分</item><item>34分</item><item>35分</item><item>36分</item>
+        <item>37分</item><item>38分</item><item>39分</item><item>40分</item>
+        <item>41分</item><item>42分</item><item>43分</item><item>44分</item><item>45分</item><item>46分</item>
+        <item>47分</item><item>48分</item><item>49分</item>
+        <item>50分</item>
+        <item>51分</item><item>52分</item><item>53分</item><item>54分</item><item>55分</item><item>56分</item>
+        <item>57分</item><item>58分</item><item>59分</item><item>60分</item>
+    </string-array>
+
+    <string-array name="array_time1yue">
+
+        <item>1月</item>
+        <item>2月</item>
+        <item>3月</item>
+        <item>4月</item>
+        <item>5月</item>
+        <item>6月</item>
+        <item>7月</item>
+        <item>8月</item>
+        <item>9月</item>
+        <item>10月</item>
+        <item>11月</item>
+        <item>12月</item>
+
+    </string-array>
+
+    <string-array name="array_modify">
+
+        <item>活动名称</item>
+        <item>活动内容</item>
+        <item>活动时间</item>
+        <item>活动地点</item>
+        <item>注意事项</item>
+        <item>报名要求</item>
+        <item>人数要求</item>
+        <item>是否培训</item>
+        <item>是否有偿</item>
+
+    </string-array>
+
+    <string-array name="array_time1ri">
+
+        <item>1日</item><item>2日</item><item>3日</item>
+        <item>4日</item><item>5日</item><item>6日</item>
+        <item>7日</item><item>8日</item><item>9日</item>
+        <item>10日</item><item>11日</item><item>12日</item>
+        <item>13日</item><item>14日</item><item>15日</item>
+        <item>16日</item><item>17日</item><item>18日</item>
+        <item>19日</item><item>20日</item><item>21日</item>
+        <item>22日</item><item>23日</item><item>24日</item>
+        <item>25日</item><item>26日</item><item>27日</item>
+        <item>28日</item><item>29日</item><item>30日</item>
+        <item>31日</item>
+
+
+    </string-array>
+
 </resources>

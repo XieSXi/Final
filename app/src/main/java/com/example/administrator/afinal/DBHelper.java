@@ -6,13 +6,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class DBHelper extends SQLiteOpenHelper {
-    private static final int VERSION = 5;
+    private static final int VERSION = 8;
     private static final String DB_NAME = "activityManage.db";
     public static final String TB_NAME0 = "tb_user";
     public static final String TB_NAME1 = "tb_users";
     public static final String TB_NAME2 = "tb_students";
     public static final String TB_NAME3 = "tb_organization";
     public static final String TB_NAME4 = "tb_manager";
+    public static final String TB_NAME5 = "tb_huodong";
+    public static final String TB_NAME6 = "tb_acti";
     public String TAG="database";
 
     public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -33,8 +35,14 @@ public class DBHelper extends SQLiteOpenHelper {
 //        Log.i(TAG,"用户表tb_students已创建");
 //        db.execSQL("CREATE TABLE "+TB_NAME3+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,ORGNAME TEXT,ORGPWD TEXT)");
 //        Log.i(TAG,"用户表tb_organization已创建");
-        db.execSQL("CREATE TABLE "+TB_NAME4+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,MANANAME TEXT,MANAPWD TEXT)");
-        Log.i(TAG,"用户表tb_manager已创建");
+//        db.execSQL("CREATE TABLE "+TB_NAME4+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,MANANAME TEXT,MANAPWD TEXT)");
+//        Log.i(TAG,"用户表tb_manager已创建");
+          db.execSQL("DROP TABLE "+TB_NAME5);
+          Log.i(TAG,"表已删除");
+          db.execSQL("CREATE TABLE "+TB_NAME6+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,HDORG TEXT,HDNAME TEXT,HDTIME TEXT,HDCONTENT TEXT,HDPLACE TEXT,HDREQUESTS TEXT," +
+                  "HDRENSHU TEXT,ATTENTION TEXT,TRAIN TEXT,PAY TEXT,HDYUE TEXT,HDRI TEXT,HDSHI TEXT,HDFEN TEXT)");
+          Log.i(TAG,"用户表tb_acti已创建");
+
     }
 
     @Override

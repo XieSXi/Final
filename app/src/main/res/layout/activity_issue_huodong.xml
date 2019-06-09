@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".organizationloginActivity">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/lll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="0.1dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            >
+
+
+            <RelativeLayout
+                android:id="@+id/rl_loginactivity_top"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/welcome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="发布志愿活动"
+                    android:textSize="40dp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_loginactivity_two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_below="@+id/rl_loginactivity_top"
+                android:layout_marginTop="0.1dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_huodongname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="活动名称："
+                        android:textSize="20dp" />
+                    <EditText
+                        android:id="@+id/et_huodongname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="请输入活动名称：" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_huodongtime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="活动时间："
+                        android:textSize="20dp" />
+
+                    <EditText
+                        android:id="@+id/et_huodongtime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="xx月xx日xx:xx-xx:xx" />
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_huodongplace"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="活动地点："
+                        android:textSize="20dp" />
+                    <EditText
+                        android:id="@+id/et_huodongplace"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="请输入活动地点：" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_huodongcontent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="活动内容："
+                        android:textSize="20dp" />
+                    <EditText
+                        android:id="@+id/et_huodongcontent"
+                        android:layout_width="match_parent"
+                        android:scrollbars="vertical" android:maxLines="10"
+                        android:layout_height="wrap_content"
+                        android:hint="请输入活动内容：" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tv_baomingrequests"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="报名要求："
+                        android:textSize="20dp" />
+                    <EditText
+                        android:id="@+id/et_baomingrequests"
+                        android:layout_width="match_parent"
+                        android:scrollbars="vertical"
+                        android:maxLines="10"
+                        android:layout_height="wrap_content"
+                        android:hint="请输入报名要求：" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_renshurequests"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="需求人数："
+                        android:textSize="20dp" />
+
+                    <EditText
+                        android:id="@+id/et_renshurequests"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="请输入需求人数："
+                        android:inputType="number" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_attention"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="注意事项："
+                        android:textSize="20dp" />
+                    <EditText
+                        android:id="@+id/et_attention"
+                        android:layout_width="match_parent"
+                        android:scrollbars="vertical"
+                        android:maxLines="10"
+                        android:layout_height="wrap_content"
+                        android:hint="请输入注意事项：" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_whethertrain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:text="是否培训：" />
+
+                    <EditText
+                        android:id="@+id/et_whethertrain"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="请输入是否培训"
+                        android:inputType="text|textPassword" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_whetherpay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:text="是否有偿：" />
+
+                    <EditText
+                        android:id="@+id/et_whetherpay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="请输入是or否"
+                        android:inputType="text|textPassword" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_baomingjiezhi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="截止时间："
+                        android:textSize="20dp" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+                        <Spinner
+                            android:id="@+id/time1yue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/array_time1yue" />
+                        <Spinner
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/time1ri"
+                            android:entries="@array/array_time1ri"    />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_baomingjiezhi2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="                    "
+                        android:textSize="20dp" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+                        <Spinner
+                            android:id="@+id/time1shi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/array_time1shi" />
+
+                        <Spinner
+                            android:id="@+id/time1fen"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/array_time1fen" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/ll_loginactivity_three"
+            android:layout_below="@+id/ll_loginactivity_two">
+            <Button
+                android:id="@+id/loginButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="发布" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_loginactivity_three"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_centerInParent="true"
+                    android:layout_marginVertical="30dp"
+                    android:text="发布状态"
+                    android:textColor="#B3B3B3"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</ScrollView>
+
+
+
+</RelativeLayout>

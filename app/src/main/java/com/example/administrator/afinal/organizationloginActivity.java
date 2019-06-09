@@ -1,6 +1,7 @@
 package com.example.administrator.afinal;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 
@@ -65,12 +66,17 @@ public class organizationloginActivity extends AppCompatActivity {
                     if (result == 1) {
                         state.setText("登录成功！");
 
-                        SharedPreferences mySharedPreferences= getSharedPreferences("orginfo",Activity.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = mySharedPreferences.edit();
-                        editor.putString("orgname", orgname.getText().toString());
-                        editor.commit();
+//                        SharedPreferences mySharedPreferences= getSharedPreferences("orginfo",Activity.MODE_PRIVATE);
+//                        SharedPreferences.Editor editor = mySharedPreferences.edit();
+//                        editor.putString("orgname", oname );
+//                        editor.commit();
 
-                        //跳转到主页面
+                        //保存登录的组织名后跳转到主页面
+                        Intent intent= new Intent(getApplicationContext(),MainActivity.class);//打开另一个Activity
+                        Bundle bundle = new Bundle();
+                        bundle.putString("orgname_key",oname);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
 
 
 
@@ -87,6 +93,7 @@ public class organizationloginActivity extends AppCompatActivity {
                 }
             }
         });
+
 
 
 
