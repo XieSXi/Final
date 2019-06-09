@@ -13,7 +13,7 @@ public class ManageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_manage);
 
         ViewPager viewPager  =(ViewPager)findViewById(R.id.viewpager);
-        ManagePageAdapter pageAdapter =new ManagePageAdapter(getSupportFragmentManager());
+        ManagePageAdapter1 pageAdapter =new ManagePageAdapter1(getSupportFragmentManager());
         viewPager .setAdapter(pageAdapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);

@@ -1,6 +1,7 @@
 package com.example.administrator.afinal;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -71,7 +72,11 @@ public class issueHuodongFragment extends Fragment {
         hdshi=(Spinner) v.findViewById(R.id.time1shi);
         state=(TextView)v.findViewById(R.id.state);
 
-        hdorg1=getArguments().getString("org");
+        hdorg1=getActivity().getSharedPreferences("orginfo", Context.MODE_PRIVATE).getString("orgname", "青协");
+
+
+
+//        hdorg1=getArguments().getString("org");
 //        hdorg1="青协";
 
 

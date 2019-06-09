@@ -11,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class OrganizationActivity extends AppCompatActivity {
-    private String organization1;
     String TAG="org";
 
 

@@ -178,13 +178,14 @@ public class UserManager {
     public List<HdItem> listAll1(){
         List<HdItem> hdList = null;   //很多行数据，每一行数据表示为一个RateItem对象
         SQLiteDatabase db = dbHelper.getReadableDatabase();   //dbHelper = new DBHelper(context); dbHelper是DBHelper类的一个实例，通过这个实例获得数据库访问获得一个只读数据库;
-        Cursor cursor = db.query(TBNAME5, null, null, null, null, null, null);
+        Cursor cursor = db.query(TBNAME6, null, null, null, null, null, null);
         //db.query查询数据 表name后面都是null，是查询所有数据；返回的是一个光标，
         if(cursor!=null){    //是将数据装载到列表里的过程
             hdList = new ArrayList<HdItem>(); //List<RateItem> rateList = null,空对象是不能有任何方法的，所以对rateList进行实例化
             while(cursor.moveToNext()){ //当获得游标之后，它是停留在标题行；是否可以移到下一行，如果下一行有数据就会移到下一行
                 HdItem item = new HdItem();
                 item.setId(cursor.getInt(cursor.getColumnIndex("ID")));//cursor.getColumnIndex("ID")：光标获取ID这一列的索引
+                item.setHdorg(cursor.getString(cursor.getColumnIndex("HDORG")));
                 item.setHdname(cursor.getString(cursor.getColumnIndex("HDNAME")));
                 item.setHdtime(cursor.getString(cursor.getColumnIndex("HDTIME")));
                 item.setHdcontent(cursor.getString(cursor.getColumnIndex("HDCONTENT")));
