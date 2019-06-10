@@ -57,16 +57,7 @@ public class OrganizationActivity extends AppCompatActivity {
             Intent config= new Intent(this,orghuodongChakanActivity.class);//查看我发布的活动
             startActivity(config);
         }
-        else if(item.getItemId()==R.id.menu_volunteer){
 
-            Intent list= new Intent(this,MainActivity.class);//打开另一个Activity 待做页面：志愿者管理
-            startActivity(list);
-
-
-
-
-
-        }
         return super.onOptionsItemSelected(item);
     }
 }

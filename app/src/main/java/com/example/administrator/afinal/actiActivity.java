@@ -10,16 +10,18 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class actiActivity extends ListActivity implements AdapterView.OnItemClickListener {
+public class actiActivity extends ListActivity implements AdapterView.OnItemClickListener,AdapterView.OnItemLongClickListener {
     List<Map<String, Object>> listitem = new ArrayList<>(); //存储数据的数组列表
-    String TAG="acti";
+    String TAG="activityshow";
     String username;
+    String hdname;
     int[] image_expense = new int[]{R.mipmap.gaokaozy,R.mipmap.dongwuzy,R.mipmap.ertongzy,R.mipmap.jinglaozy,R.mipmap.malasongzy,
             R.mipmap.xueleifengzy,R.mipmap.saodizy,R.mipmap.yimaizy,R.mipmap.any};
     @Override
@@ -43,6 +45,9 @@ public class actiActivity extends ListActivity implements AdapterView.OnItemClic
 
         getListView().setAdapter(adapter);
         getListView().setOnItemClickListener(this);
+        getListView().setOnItemLongClickListener(this);
+
+
 
 
 
@@ -87,15 +92,25 @@ public class actiActivity extends ListActivity implements AdapterView.OnItemClic
         Log.i(TAG,"OnItemClick: position=" +position);
         Log.i(TAG,"OnItemClick: id=" +id);
         HashMap<String,String> map1= (HashMap<String, String>) getListView().getItemAtPosition(position);
-        String name=map1.get("name");
-        Log.i(TAG,"OnItemClick: hdname=" +name);
+        hdname=map1.get("name");
+        Log.i(TAG,"OnItemClick: hdname=" +hdname);
 
         //打开活动详情页面，传入参数
         Intent xiangqing= new Intent(this,XiangqingActivity.class);
         xiangqing.putExtra("username",username);
-        xiangqing.putExtra("hdname",name);
+        xiangqing.putExtra("hdname",hdname);
         startActivity(xiangqing);
+    }
 
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+        UserManager userManager = new UserManager(actiActivity.this);
+        userManager.add5(new AttendItem(hdname,username));
+        Log.i(TAG, "数据已写入attend数据库");
+        Toast.makeText(getApplicationContext(), "报名成功，可前往我的志愿活动查看", Toast.LENGTH_SHORT).show();
+        return true;//长按操作时屏蔽短按操作  之前放在第一排居然会报错！
     }
 }
 

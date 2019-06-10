@@ -3,8 +3,5 @@
     <item
         android:id="@+id/menu_huodong"
         android:title="查看我发布的活动" />
-    <item
-        android:id="@+id/menu_volunteer"
-        android:title="管理活动志愿者" />
 
 </menu>

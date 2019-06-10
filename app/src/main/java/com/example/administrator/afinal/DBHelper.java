@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class DBHelper extends SQLiteOpenHelper {
-    private static final int VERSION = 9;
+    private static final int VERSION = 10;
     private static final String DB_NAME = "activityManage.db";
     public static final String TB_NAME0 = "tb_user";
     public static final String TB_NAME1 = "tb_users";
@@ -43,8 +43,10 @@ public class DBHelper extends SQLiteOpenHelper {
 //          db.execSQL("CREATE TABLE "+TB_NAME6+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,HDORG TEXT,HDNAME TEXT,HDTIME TEXT,HDCONTENT TEXT,HDPLACE TEXT,HDREQUESTS TEXT," +
 //                  "HDRENSHU TEXT,ATTENTION TEXT,TRAIN TEXT,PAY TEXT,HDYUE TEXT,HDRI TEXT,HDSHI TEXT,HDFEN TEXT)");
 //          Log.i(TAG,"用户表tb_acti已创建");
-        db.execSQL("CREATE TABLE "+TB_NAME7+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,HDNAME TEXT,USERNAME TEXT)");
-        Log.i(TAG,"用户表tb_attend已创建");
+//        db.execSQL("CREATE TABLE "+TB_NAME7+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,HDNAME TEXT,USERNAME TEXT)");
+//        Log.i(TAG,"用户表tb_attend已创建");
+        db.execSQL("ALTER TABLE tb_attend ADD  JUDGE TEXT;");
+        Log.i(TAG,"表tb_attend中新列JUDGE已创建");
 
     }
 
