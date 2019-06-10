@@ -14,6 +14,7 @@ public class UserManager {
     private String TBNAME4;
     private String TBNAME5;
     private String TBNAME6;
+    private String TBNAME7;
 
 
     public UserManager(Context context) {
@@ -24,6 +25,7 @@ public class UserManager {
         TBNAME4= dbHelper.TB_NAME4;
         TBNAME5= dbHelper.TB_NAME5;
         TBNAME6= dbHelper.TB_NAME6;
+        TBNAME7= dbHelper.TB_NAME7;
 
     }
 
@@ -56,7 +58,6 @@ public class UserManager {
         db.insert(TBNAME2, null, values);
         db.close();
     }
-
 
 
     public void add2(String orgname,String orgpwd) {
@@ -126,6 +127,16 @@ public class UserManager {
         db.insert(TBNAME6, null, values);
         db.close();
 
+    }
+
+
+    public void add5(AttendItem item) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("HDNAME", item.getHdname());
+        values.put("USERNAME", item.getUsername());
+        db.insert(TBNAME7, null, values);
+        db.close();
     }
 
 
@@ -208,6 +219,9 @@ public class UserManager {
         db.close();
         return hdList;
     }
+
+
+
 
 
 
@@ -298,6 +312,42 @@ public class UserManager {
         db.close();
         return hdList;
     }
+
+
+
+    public List<HdItem> showByHdname(String hdname){
+        List<HdItem> hdList = null;   //很多行数据，每一行数据表示为一个RateItem对象
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(TBNAME6, null, "HDNAME=?", new String[]{String.valueOf(hdname)}, null, null, null);
+        if(cursor!=null){
+            hdList=new ArrayList<HdItem>();
+            while(cursor.moveToNext()) {
+                HdItem hdItem = new HdItem();
+                hdItem.setId(cursor.getInt(cursor.getColumnIndex("ID")));
+                hdItem.setHdorg(cursor.getString(cursor.getColumnIndex("HDORG")));
+                hdItem.setHdname(cursor.getString(cursor.getColumnIndex("HDNAME")));
+                hdItem.setHdtime(cursor.getString(cursor.getColumnIndex("HDTIME")));
+                hdItem.setHdcontent(cursor.getString(cursor.getColumnIndex("HDCONTENT")));
+                hdItem.setHdplace(cursor.getString(cursor.getColumnIndex("HDPLACE")));
+                hdItem.setHdrequests(cursor.getString(cursor.getColumnIndex("HDREQUESTS")));
+                hdItem.setHdrenshu(cursor.getString(cursor.getColumnIndex("HDRENSHU")));
+                hdItem.setHdattention(cursor.getString(cursor.getColumnIndex("ATTENTION")));
+                hdItem.setHdtrain(cursor.getString(cursor.getColumnIndex("TRAIN")));
+                hdItem.setHdpay(cursor.getString(cursor.getColumnIndex("PAY")));
+                hdItem.setHdyue(cursor.getString(cursor.getColumnIndex("HDYUE")));
+                hdItem.setHdri(cursor.getString(cursor.getColumnIndex("HDRI")));
+                hdItem.setHdshi(cursor.getString(cursor.getColumnIndex("HDSHI")));
+                hdItem.setHdfen(cursor.getString(cursor.getColumnIndex("HDFEN")));
+
+                hdList.add(hdItem);
+            }
+
+            cursor.close();
+        }
+        db.close();
+        return hdList;
+    }
+
 
 
 

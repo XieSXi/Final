@@ -54,7 +54,7 @@ public class OrganizationActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()==R.id.menu_huodong){
-            Intent config= new Intent(this,orghuodongChakanActivity.class);//打开另一个Activity
+            Intent config= new Intent(this,orghuodongChakanActivity.class);//查看我发布的活动
             startActivity(config);
         }
         else if(item.getItemId()==R.id.menu_volunteer){
