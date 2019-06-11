@@ -69,13 +69,13 @@ public class orghuodongChakanActivity extends ListActivity implements AdapterVie
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
         Log.i(TAG,"我发布的活动被长按");
-//        Intent valunteer= new Intent(this,ValunteerActivity.class);
-//        HashMap<String,String> map1= (HashMap<String, String>) getListView().getItemAtPosition(position);
-//        hdname=map1.get("name");
-//        Log.i(TAG,"haname"+hdname);
-//        valunteer.putExtra("hdname",hdname);
-//        valunteer.putExtra("orgname",org);
-//        startActivity(valunteer);
+        Intent valunteer= new Intent(this,ValunteerActivity.class);
+        HashMap<String,String> map1= (HashMap<String, String>) getListView().getItemAtPosition(position);
+        hdname=map1.get("name");
+        Log.i(TAG,"haname"+hdname);
+        valunteer.putExtra("hdname",hdname);
+        valunteer.putExtra("orgname",org);
+        startActivity(valunteer);
         return true;
     }
 

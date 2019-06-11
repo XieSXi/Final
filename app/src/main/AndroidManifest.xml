@@ -112,7 +112,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".XiangqingActivity" >
+        <activity android:name=".XiangqingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -120,6 +120,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".ValunteerActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ValunteerJudgeActivity" android:theme="@style/Base.Theme.AppCompat.Dialog">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

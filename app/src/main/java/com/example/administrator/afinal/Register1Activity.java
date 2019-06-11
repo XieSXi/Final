@@ -24,6 +24,7 @@ public class Register1Activity extends AppCompatActivity {
     public String TAG="register1";
     String stuno;String stuna;String userna;String password1;String password2;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -353,6 +353,34 @@ public class UserManager {
 
 
 
+    public UserItem showByUsername(String username){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        UserItem item = new UserItem();
+        Cursor cursor = db.query(TBNAME1, null, "USERNAME=?", new String[]{String.valueOf(username)}, null, null, null);
+        if(cursor!=null){
+            while(cursor.moveToNext()) {
+
+                item.setStuNo(cursor.getString(cursor.getColumnIndex("STUNO")));
+                item.setStuName(cursor.getString(cursor.getColumnIndex("STUNAME")));
+                item.setUserName(cursor.getString(cursor.getColumnIndex("USERNAME")));
+                item.setNianJi(cursor.getString(cursor.getColumnIndex("NIANJI")));
+                item.setXueYuan(cursor.getString(cursor.getColumnIndex("XUEYUAN")));
+                item.setMajor(cursor.getString(cursor.getColumnIndex("MAJOR")));
+                item.setTel(cursor.getString(cursor.getColumnIndex("TEL")));
+                item.setEmail(cursor.getString(cursor.getColumnIndex("EMAIL")));
+
+            }
+
+            cursor.close();
+        }
+        db.close();
+        return item;
+    }
+
+
+
+
+
 
     public List<AttendItem> showByHdname1(String hdname){
         List<AttendItem> attendList = null;   //很多行数据，每一行数据表示为一个RateItem对象
@@ -608,6 +636,16 @@ public class UserManager {
 
 
 
+    public void updateAttend(String hdname,String username,String judge){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("HDNAME", hdname);
+        values.put("USERNAME", username);
+        values.put("JUDGE", judge);
+
+        db.update(TBNAME7, values, "HDNAME=?"+" and "+"USERNAME=?",new String[]{hdname,username});
+        db.close();
+    }
 
 
 

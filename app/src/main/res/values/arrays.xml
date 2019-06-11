@@ -117,4 +117,12 @@
 
     </string-array>
 
+
+    <string-array name="array_judge">
+
+        <item>优秀</item><item>良好</item><item>缺席</item>
+
+
+
+    </string-array>
 </resources>

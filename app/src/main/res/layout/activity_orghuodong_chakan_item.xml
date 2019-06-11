@@ -12,9 +12,6 @@
     tools:context=".orghuodongChakanActivity">
 
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
         <LinearLayout
             android:id="@+id/lll"
@@ -307,7 +304,5 @@
 
 
         </LinearLayout>
-
-    </ScrollView>
 
 </RelativeLayout>
