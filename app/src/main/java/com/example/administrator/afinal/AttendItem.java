@@ -4,15 +4,18 @@ public class AttendItem {
     private int id;
     private String hdname;
     private String username;
+    private String judge;
 
     public AttendItem() {
         this.hdname ="";
         this.username = "";
+        this.judge = "" ;
     }
 
-    public AttendItem(String hdname, String username) {
+    public AttendItem(String hdname, String username,String judge) {
         this.hdname = hdname;
         this.username = username;
+        this.judge =judge;
     }
 
 
@@ -38,5 +41,13 @@ public class AttendItem {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getJudge() {
+        return judge;
+    }
+
+    public void setJudge(String judge) {
+        this.judge = judge;
     }
 }

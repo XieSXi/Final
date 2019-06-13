@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_tuijian"
+        android:title="智能推荐" />
+    <item
+        android:id="@+id/menu_my"
+        android:title="我的志愿活动" />
+
+</menu>

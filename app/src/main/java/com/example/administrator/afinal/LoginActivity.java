@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                         editor.commit();
 
                         //跳转到活动页面
-                        Intent intent= new Intent(getApplicationContext(),actiActivity.class);//打开另一个Activity
+                        Intent intent= new Intent(getApplicationContext(),UserwelcomeActivity.class);//打开另一个Activity
                         Bundle bundle = new Bundle();
                         bundle.putString("user_key",uname);
                         intent.putExtras(bundle);

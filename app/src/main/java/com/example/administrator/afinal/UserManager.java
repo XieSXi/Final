@@ -404,6 +404,27 @@ public class UserManager {
 
 
 
+    public List<AttendItem> showByUsername1(String username){
+        List<AttendItem> attendList = null;   //很多行数据，每一行数据表示为一个RateItem对象
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(TBNAME7, null, "USERNAME=?", new String[]{String.valueOf(username)}, null, null, null);
+        if(cursor!=null){
+            attendList=new ArrayList<AttendItem>();
+            while(cursor.moveToNext()) {
+                AttendItem attendItem = new AttendItem();
+                attendItem.setId(cursor.getInt(cursor.getColumnIndex("ID")));
+                attendItem.setHdname(cursor.getString(cursor.getColumnIndex("HDNAME")));
+                attendItem.setUsername(cursor.getString(cursor.getColumnIndex("USERNAME")));
+                attendItem.setUsername(cursor.getString(cursor.getColumnIndex("JUDGE")));
+                attendList.add(attendItem);
+            }
+
+            cursor.close();
+        }
+        db.close();
+        return attendList;
+    }
+
 
 
 
@@ -646,6 +667,10 @@ public class UserManager {
         db.update(TBNAME7, values, "HDNAME=?"+" and "+"USERNAME=?",new String[]{hdname,username});
         db.close();
     }
+
+
+
+
 
 
 

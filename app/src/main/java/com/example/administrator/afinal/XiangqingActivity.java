@@ -60,7 +60,7 @@ public class XiangqingActivity extends AppCompatActivity {
                 Log.i(TAG, "用户名：" + username + "   报名活动：" + hdname);
 
                 UserManager userManager = new UserManager(XiangqingActivity.this);
-                userManager.add5(new AttendItem(hdname,username));
+                userManager.add5(new AttendItem(hdname,username,null));
                 Log.i(TAG, "数据已写入attend数据库");
                 bmstate.setText("报名成功，可前往我的志愿活动查看");
                 }
