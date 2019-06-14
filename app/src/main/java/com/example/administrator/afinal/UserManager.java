@@ -415,7 +415,7 @@ public class UserManager {
                 attendItem.setId(cursor.getInt(cursor.getColumnIndex("ID")));
                 attendItem.setHdname(cursor.getString(cursor.getColumnIndex("HDNAME")));
                 attendItem.setUsername(cursor.getString(cursor.getColumnIndex("USERNAME")));
-                attendItem.setUsername(cursor.getString(cursor.getColumnIndex("JUDGE")));
+                attendItem.setJudge(cursor.getString(cursor.getColumnIndex("JUDGE")));
                 attendList.add(attendItem);
             }
 
@@ -440,6 +440,36 @@ public class UserManager {
         db.close();
         return hdItem ;
     }
+
+    public HdItem findorgtimeByhdname(String huodongname){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(TBNAME6, null, "HDNAME=?", new String[]{String.valueOf(huodongname)}, null, null, null);
+        HdItem hdItem = null;
+        if(cursor!=null && cursor.moveToFirst()){
+            hdItem = new HdItem();
+            hdItem.setHdorg(cursor.getString(cursor.getColumnIndex("HDORG")));
+            hdItem.setHdtime(cursor.getString(cursor.getColumnIndex("HDTIME")));
+            cursor.close();
+        }
+        db.close();
+        return hdItem ;
+    }
+
+
+
+    public AttendItem findjudgeBy(String username,String hdname){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(TBNAME6, null, "USERNAME=?"+" and "+"HDNAME=?",new String[]{username,hdname}, null, null, null);
+        AttendItem attendItem= null;
+        if(cursor!=null && cursor.moveToFirst()){
+            attendItem = new AttendItem();
+            attendItem.setJudge(cursor.getString(cursor.getColumnIndex("JUDGE")));
+            cursor.close();
+        }
+        db.close();
+        return attendItem ;
+    }
+
 
 
 
