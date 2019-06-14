@@ -12,7 +12,7 @@ public class ZhengshuActivity extends AppCompatActivity {
     String judge;String org;
     String TAG="zhengshu";
     UserItem userItem;HdItem hdItem;AttendItem attendItem;
-    TextView vname1;TextView vtime1;TextView vjudge1;TextView vorg1;
+    TextView vname1;TextView vtime1;TextView vhdname1;TextView vjudge1;TextView vorg1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +36,10 @@ public class ZhengshuActivity extends AppCompatActivity {
         vtime1=(TextView)findViewById(R.id.vtime);
         vjudge1=(TextView)findViewById(R.id.vjudge);
         vorg1=(TextView)findViewById(R.id.vorg);
+        vhdname1=(TextView) findViewById(R.id.vhdname);
         vname1.setText(vname);
         vtime1.setText(vtime);
+        vhdname1.setText(hdname);
         vjudge1.setText(judge);
         vorg1.setText(org);
 

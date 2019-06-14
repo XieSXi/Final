@@ -74,7 +74,7 @@ public class ValunteerJudgeActivity extends AppCompatActivity {
         vemail.setText(item.getEmail());
 
         vtel1=item.getTel();
-        vjudge1 = vjudge.getSelectedItem().toString();
+
 
 
         callbtn.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +92,8 @@ public class ValunteerJudgeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                UserManager usermanager=new UserManager(getApplication());
+                vjudge1 = vjudge.getSelectedItem().toString();
+               Log.i(TAG,"即将提交的评价为"+vjudge1);
                usermanager.updateAttend(hdname,username,vjudge1);
                Log.i(TAG,"评价已提交");
                Toast.makeText(getApplicationContext(), "评价已提交", Toast.LENGTH_SHORT).show();

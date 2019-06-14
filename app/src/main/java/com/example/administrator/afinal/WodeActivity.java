@@ -82,14 +82,13 @@ public class WodeActivity extends AppCompatActivity implements AdapterView.OnIte
         hdname=map1.get("hdname");
         judge=map1.get("judge");
         Log.i(TAG,"OnItemLongClick" +username+hdname+judge);
+        if(judge==null){
+            judge="未评价";
+        }
 
-        if(judge.equals("缺席")){
-            Toast.makeText(getApplicationContext(), "很抱歉，您未完成此次志愿活动", Toast.LENGTH_SHORT).show();
-        }
-        else if(judge.length()==0){
-            Toast.makeText(getApplicationContext(), "很抱歉，组织管理员还未对此次志愿活动进行评价", Toast.LENGTH_SHORT).show();
-        }
-        else{
+
+
+        if(judge.equals("优秀")||judge.equals("良好")){
             Intent intent= new Intent(getApplicationContext(),ZhengshuActivity.class);//打开另一个Activity
             Bundle bundle1 = new Bundle();
             bundle1.putString("username",username);
@@ -98,6 +97,13 @@ public class WodeActivity extends AppCompatActivity implements AdapterView.OnIte
             intent.putExtras(bundle1);
             startActivity(intent);
             Toast.makeText(getApplicationContext(), "将为您生成此次活动的志愿证书", Toast.LENGTH_SHORT).show();
+        }
+        else if(judge.equals("缺席")){
+            Toast.makeText(getApplicationContext(), "很抱歉，您未完成此次志愿活动", Toast.LENGTH_SHORT).show();
+        }
+        else if(judge.equals("未评价")){
+            Log.i(TAG,"judge为空");
+            Toast.makeText(getApplicationContext(), "很抱歉，组织管理员还未对此次志愿活动进行评价", Toast.LENGTH_SHORT).show();
         }
 
 

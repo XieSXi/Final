@@ -186,6 +186,9 @@ public class UserManager {
     }
 
 
+
+
+
     public List<HdItem> listAll1(){
         List<HdItem> hdList = null;   //很多行数据，每一行数据表示为一个RateItem对象
         SQLiteDatabase db = dbHelper.getReadableDatabase();   //dbHelper = new DBHelper(context); dbHelper是DBHelper类的一个实例，通过这个实例获得数据库访问获得一个只读数据库;
@@ -699,11 +702,86 @@ public class UserManager {
     }
 
 
+    public List<StuItem> liststu(){
+        List<StuItem> stuList = null;   //很多行数据，每一行数据表示为一个RateItem对象
+        SQLiteDatabase db = dbHelper.getReadableDatabase();   //dbHelper = new DBHelper(context); dbHelper是DBHelper类的一个实例，通过这个实例获得数据库访问获得一个只读数据库;
+        Cursor cursor = db.query(TBNAME2, null, null, null, null, null, null);
+        //db.query查询数据 表name后面都是null，是查询所有数据；返回的是一个光标，
+        if(cursor!=null){    //是将数据装载到列表里的过程
+            stuList = new ArrayList<StuItem>(); //List<RateItem> rateList = null,空对象是不能有任何方法的，所以对rateList进行实例化
+            while(cursor.moveToNext()){ //当获得游标之后，它是停留在标题行；是否可以移到下一行，如果下一行有数据就会移到下一行
+                StuItem item = new StuItem();
+                item.setId(cursor.getInt(cursor.getColumnIndex("ID")));//cursor.getColumnIndex("ID")：光标获取ID这一列的索引
+                item.setStuno(cursor.getString(cursor.getColumnIndex("STUNO")));
+                item.setStuname(cursor.getString(cursor.getColumnIndex("STUNAME")));
+                stuList.add(item);
+                //把行数据转化成了对象，转化完之后把当前对象放到列表里面来
+            }
+            cursor.close();
+        }
+        db.close();
+        return stuList;
+    }
 
 
 
 
+    public void deletexueji(String stuno){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.delete(TBNAME2, "STUNO=?", new String[]{String.valueOf(stuno)});
+        db.close();
+    }
 
+
+
+    public List<OrgItem> listorg(){
+        List<OrgItem> orgList = null;   //很多行数据，每一行数据表示为一个RateItem对象
+        SQLiteDatabase db = dbHelper.getReadableDatabase();   //dbHelper = new DBHelper(context); dbHelper是DBHelper类的一个实例，通过这个实例获得数据库访问获得一个只读数据库;
+        Cursor cursor = db.query(TBNAME3, null, null, null, null, null, null);
+        //db.query查询数据 表name后面都是null，是查询所有数据；返回的是一个光标，
+        if(cursor!=null){    //是将数据装载到列表里的过程
+            orgList = new ArrayList<OrgItem>(); //List<RateItem> rateList = null,空对象是不能有任何方法的，所以对rateList进行实例化
+            while(cursor.moveToNext()){ //当获得游标之后，它是停留在标题行；是否可以移到下一行，如果下一行有数据就会移到下一行
+                OrgItem item = new OrgItem();
+                item.setId(cursor.getInt(cursor.getColumnIndex("ID")));//cursor.getColumnIndex("ID")：光标获取ID这一列的索引
+                item.setOrgname(cursor.getString(cursor.getColumnIndex("ORGNAME")));
+                item.setOrgpwd(cursor.getString(cursor.getColumnIndex("ORGPWD")));
+                orgList.add(item);
+                //把行数据转化成了对象，转化完之后把当前对象放到列表里面来
+            }
+            cursor.close();
+        }
+        db.close();
+        return orgList;
+    }
+
+
+
+
+    public void deletezuzhi(String orgname){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.delete(TBNAME3, "ORGNAME=?", new String[]{String.valueOf(orgname)});
+        db.close();
+    }
+
+    public void luruxj(StuItem item) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("STUNO", item.getStuno());
+        values.put("STUNAME", item.getStuname());
+        db.insert(TBNAME2, null, values);
+        db.close();
+    }
+
+
+    public void luruzz(OrgItem item) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("ORGNAME", item.getOrgname());
+        values.put("ORGPWD", item.getOrgpwd());
+        db.insert(TBNAME3, null, values);
+        db.close();
+    }
 }
 
 

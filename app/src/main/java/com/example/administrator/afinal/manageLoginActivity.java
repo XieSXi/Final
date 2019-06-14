@@ -1,6 +1,7 @@
 package com.example.administrator.afinal;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -53,9 +54,8 @@ public class manageLoginActivity extends AppCompatActivity {
                     if (result == 1) {
                         state.setText("登录成功！");
 
-
-                        //跳转页面
-
+                        Intent intent= new Intent(getApplicationContext(),Xmanager2Activity.class);//打开另一个Activity
+                        startActivity(intent);
 
 
                     } else if (result == 0) {
