@@ -53,7 +53,6 @@ public class manageLoginActivity extends AppCompatActivity {
                     Log.i(TAG, "登录后验证结果：" + result);
                     if (result == 1) {
                         state.setText("登录成功！");
-
                         Intent intent= new Intent(getApplicationContext(),Xmanager2Activity.class);//打开另一个Activity
                         startActivity(intent);
 

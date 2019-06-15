@@ -33,7 +33,7 @@
             android:layout_width="193dp"
             android:layout_height="match_parent"
             android:background="@mipmap/zhineng"
-            android:text="智能推荐"
+            android:text=" 志愿者官网"
             android:textColor="@color/colortext"
             android:textSize="20dp"
             android:textStyle="bold" />

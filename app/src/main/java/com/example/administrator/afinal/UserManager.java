@@ -230,9 +230,29 @@ public class UserManager {
 
 
 
-    public void deleteAll(){
+    public void deleteAll1(){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.delete(TBNAME1,null,null);
+        db.close();
+    }
+    public void deleteAll2(){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.delete(TBNAME2,null,null);
+        db.close();
+    }
+    public void deleteAll3(){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.delete(TBNAME3,null,null);
+        db.close();
+    }
+    public void deleteAll6(){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.delete(TBNAME6,null,null);
+        db.close();
+    }
+    public void deleteAll7(){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.delete(TBNAME7,null,null);
         db.close();
     }
 

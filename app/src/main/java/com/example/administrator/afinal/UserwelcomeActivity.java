@@ -2,6 +2,7 @@ package com.example.administrator.afinal;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -46,12 +47,9 @@ public class UserwelcomeActivity extends AppCompatActivity {
         zhinengbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i(TAG, "智能推荐按钮被点击");
-                Intent intent= new Intent(getApplicationContext(),TuijianActivity.class);//打开另一个Activity
-                Bundle bundle1 = new Bundle();
-                bundle1.putString("user_key",username);
-                intent.putExtras(bundle);
-                startActivity(intent);
+                Log.i(TAG, "中国青年志愿官网按钮被点击");
+                Intent web= new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.zgzyz.org.cn/"));
+                startActivity(web);
 
             }
         });
