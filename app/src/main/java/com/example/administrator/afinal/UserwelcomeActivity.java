@@ -1,5 +1,6 @@
 package com.example.administrator.afinal;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -59,6 +60,18 @@ public class UserwelcomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.i(TAG, "我的志愿按钮被点击");
                 Intent intent= new Intent(getApplicationContext(),WodeActivity.class);//打开另一个Activity
+                Bundle bundle1 = new Bundle();
+                bundle1.putString("user_key",username);
+                intent.putExtras(bundle);
+                startActivity(intent);
+
+            }
+        });
+        morebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "更多了解按钮被点击");
+                Intent intent= new Intent(getApplicationContext(),MoreActivity.class);//打开另一个Activity
                 Bundle bundle1 = new Bundle();
                 bundle1.putString("user_key",username);
                 intent.putExtras(bundle);

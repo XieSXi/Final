@@ -782,6 +782,55 @@ public class UserManager {
         db.insert(TBNAME3, null, values);
         db.close();
     }
+
+
+
+    /**
+
+     * 查询数据库中的总条数.
+
+     */
+
+    public long userscount( ){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String sql = "select count(*) from tb_users ";
+        Cursor cursor = db.rawQuery(sql, null);
+        cursor.moveToFirst();
+        long count = cursor.getLong(0);
+        cursor.close();
+        return count;
+    }
+
+    public long orgscount( ){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String sql = "select count(*) from tb_organization ";
+        Cursor cursor = db.rawQuery(sql, null);
+        cursor.moveToFirst();
+        long count = cursor.getLong(0);
+        cursor.close();
+        return count;
+    }
+
+    public long hdscount( ){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String sql = "select count(*) from tb_acti ";
+        Cursor cursor = db.rawQuery(sql, null);
+        cursor.moveToFirst();
+        long count = cursor.getLong(0);
+        cursor.close();
+        return count;
+    }
+
+    public long attendscount( ){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String sql = "select count(*) from tb_attend ";
+        Cursor cursor = db.rawQuery(sql, null);
+        cursor.moveToFirst();
+        long count = cursor.getLong(0);
+        cursor.close();
+        return count;
+    }
+
 }
 
 

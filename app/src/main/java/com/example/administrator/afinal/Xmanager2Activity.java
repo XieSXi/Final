@@ -14,6 +14,7 @@ public class Xmanager2Activity extends AppCompatActivity {
     Button zuzhixinxi;
     Button zuzhiluru;
     Button xuejiluru;
+    Button shujumanage;
 
 
     @Override
@@ -61,6 +62,14 @@ public class Xmanager2Activity extends AppCompatActivity {
             }
         });
 
-
+        shujumanage=(Button)findViewById(R.id.shujumanage);
+        shujumanage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "数据管理按钮被点击");
+                Intent intent= new Intent(getApplicationContext(),DatamanageActivity.class);//打开另一个Activity
+                startActivity(intent);
+            }
+        });
     }
 }

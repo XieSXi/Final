@@ -18,6 +18,7 @@ public class ZzxinxiActivity extends AppCompatActivity  implements AdapterView.O
     List<Map<String, Object>> listitem = new ArrayList<>(); //存储数据的数组列表
     String TAG = "zuzhixinxi";
     ListView listview;
+    SimpleAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +27,7 @@ public class ZzxinxiActivity extends AppCompatActivity  implements AdapterView.O
         listview=(ListView) findViewById(R.id.list);
         getData();
 
-        SimpleAdapter adapter = new SimpleAdapter(this
+       adapter = new SimpleAdapter(this
                 , listitem
                 , R.layout.xjxinxi_item
                 , new String[]{"orgname", "orgpwd"}
@@ -55,6 +56,8 @@ public class ZzxinxiActivity extends AppCompatActivity  implements AdapterView.O
         String orgname=map1.get("orgname");
         manager.deletezuzhi(orgname);
         Toast.makeText(getApplicationContext(), "该组织信息已删除", Toast.LENGTH_SHORT).show();
+        listitem.remove(position);
+        adapter.notifyDataSetChanged();
         return true;
     }
 }

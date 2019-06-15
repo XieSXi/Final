@@ -18,6 +18,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:text="@string/welcome"
+
             android:textSize="40dp" />
     </RelativeLayout>
 

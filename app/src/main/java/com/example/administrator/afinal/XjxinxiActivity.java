@@ -23,6 +23,7 @@ public class XjxinxiActivity extends AppCompatActivity implements AdapterView.On
     String hdname;
     String TAG = "xuejixinxi";
     ListView listview;
+    SimpleAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +33,7 @@ public class XjxinxiActivity extends AppCompatActivity implements AdapterView.On
         listview=(ListView) findViewById(R.id.list);
         getData();
 
-        SimpleAdapter adapter = new SimpleAdapter(this
+         adapter = new SimpleAdapter(this
                 , listitem
                 , R.layout.xjxinxi_item
                 , new String[]{"xuehao", "xingming"}
@@ -62,6 +63,8 @@ public class XjxinxiActivity extends AppCompatActivity implements AdapterView.On
         String xuehao=map1.get("xuehao");
         manager.deletexueji(xuehao);
         Toast.makeText(getApplicationContext(), "该学生信息已删除", Toast.LENGTH_SHORT).show();
+        listitem.remove(position);
+        adapter.notifyDataSetChanged();
         return true;
     }
 }
