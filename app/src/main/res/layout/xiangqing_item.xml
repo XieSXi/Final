@@ -38,7 +38,8 @@
                     android:layout_marginLeft="20dp"
                     android:gravity="center"
                     android:text="志愿活动详情"
-                    android:textSize="25dp" />
+                    android:textStyle="bold"
+                    android:textSize="30dp" />
             </RelativeLayout>
 
             <LinearLayout
@@ -64,10 +65,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="活动组织："
+                        android:textStyle="bold"
                         android:textSize="20dp" />
                     <TextView
                         android:id="@+id/et_org"
                         android:textSize="20dp"
+                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -81,10 +84,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="活动名称："
+                        android:textStyle="bold"
                         android:textSize="20dp" />
                     <TextView
                         android:id="@+id/et_name"
                         android:textSize="20dp"
+                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -99,11 +104,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="活动时间："
+                        android:textStyle="bold"
                         android:textSize="20dp" />
 
                     <TextView
                         android:id="@+id/et_time"
                         android:textSize="20dp"
+                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -119,11 +126,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="活动地点："
+                        android:textStyle="bold"
                         android:textSize="20dp" />
                     <TextView
                         android:id="@+id/et_place"
                         android:layout_width="wrap_content"
                         android:textSize="20dp"
+                        android:textStyle="bold"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
@@ -137,10 +146,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="活动内容："
+                        android:textStyle="bold"
                         android:textSize="20dp" />
                     <TextView
                         android:id="@+id/et_content"
                         android:textSize="20dp"
+                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -154,10 +165,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="报名要求："
+                        android:textStyle="bold"
                         android:textSize="20dp" />
                     <TextView
                         android:id="@+id/et_requests"
                         android:textSize="20dp"
+                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -172,12 +185,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="需求人数："
+                        android:textStyle="bold"
                         android:textSize="20dp" />
 
                     <TextView
                         android:id="@+id/et_renshu"
                         android:layout_width="wrap_content"
                         android:textSize="20dp"
+                        android:textStyle="bold"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
@@ -191,10 +206,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="注意事项："
+                        android:textStyle="bold"
                         android:textSize="20dp" />
                     <TextView
                         android:id="@+id/et_attention"
                         android:textSize="20dp"
+                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -209,11 +226,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20dp"
+                        android:textStyle="bold"
                         android:text="是否培训：" />
 
                     <TextView
                         android:id="@+id/et_whethertrain"
                         android:textSize="20dp"
+                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -227,11 +246,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20dp"
+                        android:textStyle="bold"
                         android:text="是否有偿：" />
 
                     <TextView
                         android:id="@+id/et_whetherpay"
                         android:textSize="20dp"
+                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -251,6 +272,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="截止时间："
+                            android:textStyle="bold"
                             android:textSize="20dp" />
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -260,21 +282,25 @@
                             <TextView
                                 android:id="@+id/yue"
                                 android:textSize="20dp"
+                                android:textStyle="bold"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="20dp"
+                                android:textStyle="bold"
                                 android:id="@+id/ri" />
                             <TextView
                                 android:id="@+id/shi"
                                 android:layout_width="wrap_content"
                                 android:textSize="20dp"
+                                android:textStyle="bold"
                                 android:layout_height="wrap_content" />
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:textSize="20dp"
+                                android:textStyle="bold"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/fen" />
                         </LinearLayout>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/f"
     tools:context=".MainActivity">
 
 
@@ -14,9 +15,11 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="146dp"
+        android:textColor="#ffebee"
         android:gravity="center"
         android:text="西南财经大学青年志愿者协会"
-        android:textSize="20dp"
+        android:textSize="25dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -31,7 +34,9 @@
         android:layout_centerHorizontal="true"
         android:textSize="25dp"
         android:layout_marginTop="207dp"
+        android:textColor="#ffebee"
         android:text="欢迎进入志愿活动管理系统!"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

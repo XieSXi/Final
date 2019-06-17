@@ -16,19 +16,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/huodongming"
+            android:textStyle="bold"
     android:text="义卖行动"
-    android:textSize="20dp"/>
+    android:textSize="25dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="报名情况"
-        android:textSize="20dp"/>
+        android:textStyle="bold"
+        android:textSize="25dp"/>
     </LinearLayout>
 
     <GridView
+        android:id="@+id/gridlist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/gridlist"
         android:numColumns="2">
 
     </GridView>

@@ -4,34 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:orientation="vertical"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="horizontal"
     tools:context=".orghuodongChakanActivity">
 
-
-    <TextView
-        android:id="@+id/valunteeruname"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="81dp"
         android:layout_height="wrap_content"
-        android:text="王花花："
-        android:layout_gravity="clip_horizontal"
-        android:textSize="20dp" />
+        android:src="@mipmap/wode" />
 
-    <TextView
-        android:id="@+id/et_org"
-        android:textSize="20dp"
-        android:text="已报名"
-        android:layout_gravity="clip_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/valunteeruname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="王花花："
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/et_org"
+            android:layout_width="84dp"
+            android:layout_height="36dp"
+            android:text="已报名"
+            android:textSize="20dp" />
 
 
 
-
+    </LinearLayout>
 
 
 

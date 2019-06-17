@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".WodeActivity">
+    tools:context=".WodeActivity"
+    android:background="@mipmap/logo">
 
 
     <TextView
@@ -14,12 +15,15 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="我的志愿"
-        android:textSize="20dp" />
+        android:textColor="#263238"
+        android:textStyle="bold"
+        android:textSize="35dp" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#263238"
         android:layout_gravity="center_horizontal"
         android:text="注：评价为良好及以上方可获得志愿证书（长按生成）" />
 

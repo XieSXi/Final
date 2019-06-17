@@ -109,15 +109,34 @@ public class actiActivity extends ListActivity implements AdapterView.OnItemClic
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
         UserManager userManager = new UserManager(actiActivity.this);
-        userManager.add5(new AttendItem(hdname,username,null));
+
 
         HashMap<String,String> map1= (HashMap<String, String>) getListView().getItemAtPosition(position);
         hdname=map1.get("name");
         Log.i(TAG,"OnItemClick: hdname=" +hdname);
-
+        userManager.add5(new AttendItem(hdname,username,null));
         Log.i(TAG, "数据已写入attend数据库");
         Toast.makeText(getApplicationContext(), "报名成功，可前往我的志愿活动查看", Toast.LENGTH_SHORT).show();
         return true;//长按操作时屏蔽短按操作  之前放在第一排居然会报错！
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.tuimain,menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==R.id.menu_main){
+            Intent config= new Intent(this,UserwelcomeActivity.class);//打开另一个Activity
+            startActivity(config);
+        }
+        else if(item.getItemId()==R.id.menu_tuichu){
+            Intent list= new Intent(this,manageLoginActivity.class);//打开另一个Activity
+            startActivity(list);
+
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 

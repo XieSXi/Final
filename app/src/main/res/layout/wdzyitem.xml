@@ -10,6 +10,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="#263238"
         android:text="TextView" />
 
     <TextView
@@ -17,20 +19,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:textSize="20dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="35dp"
-        android:text="此次志愿活动您的评价是：" />
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="115dp"
+        android:textColor="#263238"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/yourjudge"
-        android:layout_width="wrap_content"
-        android:textSize="20dp"
+        android:layout_width="77dp"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView2"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginEnd="51dp"
-        android:layout_marginRight="51dp"
-        android:text="未评价" />
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="307dp"
+        android:layout_marginRight="307dp"
+        android:text="未评价"
+        android:textColor="#263238"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="40dp"
+        android:text="此次志愿活动您的评价是："
+        android:textColor="#263238"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 </RelativeLayout>

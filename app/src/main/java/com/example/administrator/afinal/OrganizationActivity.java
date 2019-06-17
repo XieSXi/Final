@@ -57,6 +57,14 @@ public class OrganizationActivity extends AppCompatActivity {
             Intent config= new Intent(this,orghuodongChakanActivity.class);//查看我发布的活动
             startActivity(config);
         }
+        else if (item.getItemId()==R.id.menu_valunteer){
+            Intent config= new Intent(this,orghuodongChakanActivity.class);//查看我发布的活动
+            startActivity(config);
+        }
+        else if (item.getItemId()==R.id.menu_tuichulogin){
+            Intent config= new Intent(this,LoginActivity.class);//查看我发布的活动
+            startActivity(config);
+        }
 
         return super.onOptionsItemSelected(item);
     }

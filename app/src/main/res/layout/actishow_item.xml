@@ -9,6 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@mipmap/bgc"
     tools:context=".orghuodongChakanActivity">
 
 
@@ -53,6 +54,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="志愿活动："
+
+                        android:textColor="#ffebee"
                         android:textSize="20dp" />
 
                     <TextView
@@ -60,6 +63,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="校园公益行"
+
+                        android:textColor="#ffebee"
                         android:textSize="20dp" />
                 </LinearLayout>
 
@@ -87,6 +92,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="1月"
+
+                                android:textColor="#ffebee"
                                 android:textSize="20dp" />
 
                             <TextView
@@ -94,6 +101,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="2日"
+
+                                android:textColor="#ffebee"
                                 android:textSize="20dp" />
 
                             <TextView
@@ -101,6 +110,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="24时"
+
+                                android:textColor="#ffebee"
                                 android:textSize="20dp" />
 
                             <TextView
@@ -108,6 +119,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="00分"
+
+                                android:textColor="#ffebee"
                                 android:textSize="20dp" />
 
                             <TextView
@@ -115,6 +128,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="报名截止！"
+
+                                android:textColor="#ffebee"
                                 android:textSize="20dp" />
                         </LinearLayout>
 
@@ -131,6 +146,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="浏览更多信息？查看详情→"
+
+                            android:textColor="#ffebee"
                             android:textSize="20dp" />
 
                     </LinearLayout>

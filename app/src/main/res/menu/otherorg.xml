@@ -3,5 +3,11 @@
     <item
         android:id="@+id/menu_huodong"
         android:title="查看我发布的活动" />
+    <item
+        android:id="@+id/menu_valunteer"
+        android:title="管理志愿者" />
+    <item
+        android:id="@+id/menu_tuichulogin"
+        android:title="退出登录" />
 
 </menu>

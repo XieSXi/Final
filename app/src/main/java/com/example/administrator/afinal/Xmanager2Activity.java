@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -72,4 +74,20 @@ public class Xmanager2Activity extends AppCompatActivity {
             }
         });
     }
+
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.tuichu,menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==R.id.menu_tlogin){
+            Intent config= new Intent(this,LoginActivity.class);//打开另一个Activity
+            startActivity(config);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }
