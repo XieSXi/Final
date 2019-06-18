@@ -123,7 +123,7 @@ public class WodeActivity extends AppCompatActivity implements AdapterView.OnIte
             startActivity(config);
         }
         else if(item.getItemId()==R.id.menu_tuichu){
-            Intent list= new Intent(this,manageLoginActivity.class);//打开另一个Activity
+            Intent list= new Intent(this,LoginActivity.class);//打开另一个Activity
             startActivity(list);
 
 
