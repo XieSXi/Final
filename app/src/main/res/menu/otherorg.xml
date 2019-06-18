@@ -7,6 +7,9 @@
         android:id="@+id/menu_valunteer"
         android:title="管理志愿者" />
     <item
+        android:id="@+id/menu_aaa"
+        android:title="活动浏览" />
+    <item
         android:id="@+id/menu_tuichulogin"
         android:title="退出登录" />
 
