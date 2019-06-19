@@ -22,13 +22,22 @@
         android:textSize="20dp"
         tools:layout_editor_absoluteX="167dp"
         tools:layout_editor_absoluteY="420dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="取消报名"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/quxiaobtn"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteX="167dp"
+        tools:layout_editor_absoluteY="420dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:id="@+id/bmstate"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="报名状态"/>
+        android:text="提交状态"/>
 
 
 </LinearLayout>

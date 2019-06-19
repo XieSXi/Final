@@ -24,6 +24,7 @@ public class XiangqingActivity extends AppCompatActivity {
     String TAG="xiangqingye";
     List<Map<String, Object>> listitem = new ArrayList<>(); //存储数据的数组列表
     private Button baomingbtn;
+    private Button quxiaobtn;
     private TextView bmstate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,7 @@ public class XiangqingActivity extends AppCompatActivity {
         hdname=bundle.getString("hdname");
         username=bundle.getString("username");
         baomingbtn= (Button) findViewById(R.id.bmbtn);
+        quxiaobtn= (Button) findViewById(R.id.quxiaobtn);
         bmstate=(TextView)findViewById(R.id.bmstate);
 
 
@@ -58,16 +60,54 @@ public class XiangqingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.i(TAG, "报名按钮被点击");
                 Log.i(TAG, "用户名：" + username + "   报名活动：" + hdname);
-
                 UserManager userManager = new UserManager(XiangqingActivity.this);
-                userManager.add5(new AttendItem(hdname,username,null));
-                Log.i(TAG, "数据已写入attend数据库");
-                bmstate.setText("报名成功，可前往我的志愿活动查看");
+                int a=userManager.attendscount1(hdname);;
+                Log.i(TAG,"该活动当前报名人数为"+a);
+                HdItem item= userManager. findorgtimeByhdname(hdname);
+                String renshu=item.getHdrenshu();
+                int renshu1=Integer.parseInt(renshu);
+                Log.i(TAG,"该活动需求人数为"+renshu1);
+                int chongfu=userManager.chongfubaoming(hdname,username);
+                if(chongfu==0){
+                    if(renshu1>a){
+                        Toast.makeText(getApplicationContext(), "当前活动还有报名余额", Toast.LENGTH_SHORT).show();
+                        userManager.add5(new AttendItem(hdname,username,null));
+                        Log.i(TAG, "数据已写入attend数据库");
+                        Toast.makeText(getApplicationContext(), "报名成功，可前往我的志愿活动查看", Toast.LENGTH_SHORT).show();
+                    }
+                    else if((renshu1<=a)){
+                        Toast.makeText(getApplicationContext(), "抱歉，当前活动名额已满", Toast.LENGTH_SHORT).show();
+                    }
                 }
+                else{
+                    Toast.makeText(getApplicationContext(), "不可重复报名哦!", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
 
 
         });
 
+        quxiaobtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "取消报名按钮被点击");
+                Log.i(TAG, "用户名：" + username + "   报名活动：" + hdname);
+                UserManager userManager = new UserManager(XiangqingActivity.this);
+                int chongfu=userManager.chongfubaoming(hdname,username);
+                if(chongfu==0){
+                    Toast.makeText(getApplicationContext(), "您未报名哦!", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    userManager.quxiaobaoming(hdname,username);
+                    Log.i(TAG,"已从数据库中删除该attend数据");
+                    Toast.makeText(getApplicationContext(), "已取消报名!", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+
+        });
 
 
 

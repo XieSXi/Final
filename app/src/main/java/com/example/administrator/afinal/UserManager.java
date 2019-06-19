@@ -472,6 +472,7 @@ public class UserManager {
             hdItem = new HdItem();
             hdItem.setHdorg(cursor.getString(cursor.getColumnIndex("HDORG")));
             hdItem.setHdtime(cursor.getString(cursor.getColumnIndex("HDTIME")));
+            hdItem.setHdrenshu(cursor.getString(cursor.getColumnIndex("HDRENSHU")));
             cursor.close();
         }
         db.close();
@@ -851,7 +852,39 @@ public class UserManager {
         return count;
     }
 
+    public int attendscount1( String hdname){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String sql = "select count(*) from tb_attend where HDNAME=?";
+        Cursor cursor = db.rawQuery(sql,new String[]{hdname});
+        cursor.moveToFirst();
+        int count = cursor.getInt(0);
+        cursor.close();
+        return count;
+    }
+
+
+
+    public int chongfubaoming (String hdname,String username) {
+        int result =2;
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String sql = "select * from tb_attend where HDNAME=? and USERNAME=? ";
+        Cursor cursor = db.rawQuery(sql, new String[] {hdname,username});
+        if (cursor.moveToFirst()) {
+            result=1;
+            cursor.close();
+        }
+        else{
+            result=0;
+            cursor.close();
+        }
+        db.close();
+        return result;
+    }
+
+    public void quxiaobaoming(String hdname,String username){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.delete(TBNAME7,"HDNAME=?"+" and "+"USERNAME=?", new String[]{hdname,username});
+        db.close();
+    }
 }
-
-
 

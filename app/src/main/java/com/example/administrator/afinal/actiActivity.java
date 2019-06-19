@@ -109,14 +109,36 @@ public class actiActivity extends ListActivity implements AdapterView.OnItemClic
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
         UserManager userManager = new UserManager(actiActivity.this);
-
-
         HashMap<String,String> map1= (HashMap<String, String>) getListView().getItemAtPosition(position);
         hdname=map1.get("name");
         Log.i(TAG,"OnItemClick: hdname=" +hdname);
-        userManager.add5(new AttendItem(hdname,username,null));
-        Log.i(TAG, "数据已写入attend数据库");
-        Toast.makeText(getApplicationContext(), "报名成功，可前往我的志愿活动查看", Toast.LENGTH_SHORT).show();
+        int a=userManager.attendscount1(hdname);;
+        Log.i(TAG,"该活动当前报名人数为"+a);
+        HdItem item= userManager. findorgtimeByhdname(hdname);
+        String renshu=item.getHdrenshu();
+        int renshu1=Integer.parseInt(renshu);
+        Log.i(TAG,"该活动需求人数为"+renshu1);
+        int chongfu=userManager.chongfubaoming(hdname,username);
+
+        if(chongfu==0){
+            if(renshu1>a){
+                Toast.makeText(getApplicationContext(), "当前活动还有报名余额", Toast.LENGTH_SHORT).show();
+                userManager.add5(new AttendItem(hdname,username,null));
+                Log.i(TAG, "数据已写入attend数据库");
+                Toast.makeText(getApplicationContext(), "报名成功，可前往我的志愿活动查看", Toast.LENGTH_SHORT).show();
+            }
+            else if((renshu1<=a)){
+            Toast.makeText(getApplicationContext(), "抱歉，当前活动名额已满", Toast.LENGTH_SHORT).show();
+        }
+        }
+        else{
+            Toast.makeText(getApplicationContext(), "不可重复报名哦!", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+
+
         return true;//长按操作时屏蔽短按操作  之前放在第一排居然会报错！
     }
 
@@ -143,4 +165,5 @@ public class actiActivity extends ListActivity implements AdapterView.OnItemClic
 
 
 }
+
 
