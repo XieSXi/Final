@@ -26,6 +26,12 @@ public class XiangqingActivity extends AppCompatActivity {
     private Button baomingbtn;
     private Button quxiaobtn;
     private TextView bmstate;
+    private TextView yue;
+    private TextView ri;
+    private TextView shi;
+    private TextView fen;
+    String yue31,ri31,shi31,fen31,mMonth1,mDay1,mHour1,mMinute1;
+    int yue3,ri3,shi3,fen3,mMonth,mDay,mHour,mMinute;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,11 +40,29 @@ public class XiangqingActivity extends AppCompatActivity {
         final Bundle bundle=getIntent().getExtras();    //接收Extras
         hdname=bundle.getString("hdname");
         username=bundle.getString("username");
+        yue31=bundle.getString("yue3");
+        ri31=bundle.getString("ri3");
+        shi31=bundle.getString("shi3");
+        fen31=bundle.getString("fen3");
+        mMonth1=bundle.getString("month");
+        mDay1=bundle.getString("day");
+        mHour1=bundle.getString("hour");
+        mMinute1=bundle.getString("minute");
+        yue3=Integer.parseInt(yue31);
+        ri3=Integer.parseInt(ri31);
+        shi3=Integer.parseInt(shi31);
+        fen3=Integer.parseInt(fen31);
+        mMonth=Integer.parseInt(mMonth1);
+        mDay=Integer.parseInt(mDay1);
+        mHour=Integer.parseInt(mHour1);
+        mMinute=Integer.parseInt(mMinute1);
         baomingbtn= (Button) findViewById(R.id.bmbtn);
         quxiaobtn= (Button) findViewById(R.id.quxiaobtn);
         bmstate=(TextView)findViewById(R.id.bmstate);
-
-
+        yue=(TextView)findViewById(R.id.month);
+        ri=(TextView)findViewById(R.id.day);
+        shi=(TextView)findViewById(R.id.hour);
+        fen=(TextView)findViewById(R.id.minute);
         HdItem item=new HdItem();
 
         getData();
@@ -108,6 +132,27 @@ public class XiangqingActivity extends AppCompatActivity {
 
 
         });
+
+//相当于做一个报名截止倒计时
+        yue.setText(String.valueOf(yue3-mMonth));
+        if(yue3==mMonth) {
+            if(ri3==mDay){
+                ri.setText(String.valueOf(ri3-mDay));
+                if(shi3==mHour){
+                    shi.setText(String.valueOf(shi3-mHour));fen.setText(String.valueOf(fen3-mMinute));
+                }
+                else if(shi3>mHour){
+                    shi.setText(String.valueOf(shi3-mHour));fen.setText(String.valueOf(60));
+                }
+            }
+            else if(ri3>mDay){
+                ri.setText(String.valueOf(mDay-ri3));shi.setText(String.valueOf(24));fen.setText(String.valueOf(60));
+            }
+        }
+        else if(yue3>mMonth){
+            ri.setText(String.valueOf(30-mDay+ri3));shi.setText(String.valueOf(24));fen.setText(String.valueOf(60));
+        }
+
 
 
 

@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,6 +27,7 @@ public class ValunteerActivity extends AppCompatActivity implements AdapterView.
     GridView gridView;
     String valunteername;
     String TAG="valunteerlist";
+//    Button huodongqx;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,7 @@ public class ValunteerActivity extends AppCompatActivity implements AdapterView.
         org=bundle.getString("orgname");
         mingchen=(TextView) findViewById(R.id.huodongming);
         mingchen.setText(hdname);
+//        huodongqx=(Button)findViewById(R.id.huodongquxiao);
 
         getData();
 
@@ -50,19 +53,22 @@ public class ValunteerActivity extends AppCompatActivity implements AdapterView.
         gridView.setOnItemLongClickListener(this);
 
 
-//        btn=(Button)findViewById(R.id.button);
-//
-//       btn.setOnClickListener(new View.OnClickListener() {
+//        huodongqx.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                Log.i("trytry","拨号被点击");
-//                Intent intent=new Intent(Intent.ACTION_DIAL, Uri.parse("tel:15057102670"));
-//               startActivity(intent);
+//                Log.i(TAG, "删除活动按钮被点击");
+//                Log.i(TAG, "被取消的活动：" + hdname);
+//                UserManager userManager = new UserManager(ValunteerActivity.this);
+//                userManager.quxiaohuodong1(hdname);
+//                userManager.quxiaohuodong2(hdname);
+//                Log.i(TAG, "已从数据库中删除活动相关信息：" + hdname);
+//                Toast.makeText(getApplicationContext(), "已删除", Toast.LENGTH_SHORT).show();
+//
+//
 //            }
 //
 //
 //        });
-
 
 
     }
@@ -98,6 +104,8 @@ public class ValunteerActivity extends AppCompatActivity implements AdapterView.
         startActivity(valunteer);
         return true;
     }
+
+
 
 
 

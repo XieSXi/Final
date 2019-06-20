@@ -15,17 +15,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class actiActivity extends ListActivity implements AdapterView.OnItemClickListener,AdapterView.OnItemLongClickListener {
     List<Map<String, Object>> listitem = new ArrayList<>(); //存储数据的数组列表
     String TAG="activityshow";
     String username;
     String hdname;
+    String yue,ri,shi,fen;
     int[] image_expense = new int[]{R.mipmap.gaokaozy,R.mipmap.dongwuzy,R.mipmap.ertongzy,R.mipmap.jinglaozy,R.mipmap.malasongzy,
             R.mipmap.xueleifengzy,R.mipmap.saodizy,R.mipmap.yimaizy,R.mipmap.any};
+    int aa=0,bb=0,cc=0,dd=0;
+    int yue3,ri3,shi3,fen3,mMonth,mDay,mHour,mMinute;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,13 +101,60 @@ public class actiActivity extends ListActivity implements AdapterView.OnItemClic
         Log.i(TAG,"OnItemClick: id=" +id);
         HashMap<String,String> map1= (HashMap<String, String>) getListView().getItemAtPosition(position);
         hdname=map1.get("name");
-        Log.i(TAG,"OnItemClick: hdname=" +hdname);
+        yue=map1.get("yue");ri=map1.get("ri");shi=map1.get("shi");fen=map1.get("fen");
+        Log.i(TAG,"从map中取到的月日时分"+yue+ri+shi+fen);
 
-        //打开活动详情页面，传入参数
-        Intent xiangqing= new Intent(this,XiangqingActivity.class);
-        xiangqing.putExtra("username",username);
-        xiangqing.putExtra("hdname",hdname);
-        startActivity(xiangqing);
+//验证报名时间是否截止
+        String regEx="[^0-9]";Pattern p = Pattern.compile(regEx);
+        Matcher yue1 = p.matcher(yue);String yue2=yue1.replaceAll("").trim();//通过正则表达式获得了字符串中的数字
+        Matcher ri1 = p.matcher(ri);String ri2=ri1.replaceAll("").trim();//通过正则表达式获得了字符串中的数字
+        Matcher shi1 = p.matcher(shi);String shi2=shi1.replaceAll("").trim();//通过正则表达式获得了字符串中的数字
+        Matcher fen1 = p.matcher(fen);String fen2=fen1.replaceAll("").trim();//通过正则表达式获得了字符串中的数字
+        yue3 = Integer.parseInt(yue2);ri3 = Integer.parseInt(ri2);
+        shi3 = Integer.parseInt(shi2);fen3 = Integer.parseInt(fen2);
+        Calendar c = Calendar.getInstance();
+        mMonth = c.get(Calendar.MONTH) + 1;// 获取当前月份
+        mDay = c.get(Calendar.DAY_OF_MONTH);// 获取当日期
+        mHour = c.get(Calendar.HOUR_OF_DAY);//时
+        mMinute = c.get(Calendar.MINUTE);//分
+        Log.i(TAG,""+mMonth+mDay+mHour+mMinute);
+        Log.i(TAG,"OnItemClick: hdname=" +hdname+"月："+yue3+";日："+ri3+";时："+shi3+";分："+fen3);
+        if(yue3<mMonth){
+            Toast.makeText(getApplicationContext(), "该志愿活动报名时间已截止!", Toast.LENGTH_SHORT).show();
+        }
+        else if(yue3==mMonth){
+            if(ri3<mDay){
+                Toast.makeText(getApplicationContext(), "该志愿活动报名时间已截止!", Toast.LENGTH_SHORT).show();
+                Log.i(TAG,"我在这1");
+            }
+            else if(ri3==mDay){
+                if(shi3<mHour){
+                    Toast.makeText(getApplicationContext(), "该志愿活动报名时间已截止!", Toast.LENGTH_SHORT).show();
+                    Log.i(TAG,"我在这6");
+                }
+                else if(shi3==mHour){
+                    if(fen3<mMinute){
+                        Toast.makeText(getApplicationContext(), "该志愿活动报名时间已截止!", Toast.LENGTH_SHORT).show();
+                        Log.i(TAG,"我在这7");
+                    }
+                    else {
+                        openxiangqing();aa=1;Log.i(TAG,"我在这2");
+                    }
+
+                }
+                else{
+                    openxiangqing();bb=1;Log.i(TAG,"我在这3");
+                }
+
+            }
+            else{
+                openxiangqing();cc=1;Log.i(TAG,"我在这4");
+            }
+        }
+        else{
+            openxiangqing();dd=1;Log.i(TAG,"我在这5");
+        }
+
     }
 
 
@@ -120,6 +173,7 @@ public class actiActivity extends ListActivity implements AdapterView.OnItemClic
         Log.i(TAG,"该活动需求人数为"+renshu1);
         int chongfu=userManager.chongfubaoming(hdname,username);
 
+        if(aa==1||bb==1||cc==1||dd==1){
         if(chongfu==0){
             if(renshu1>a){
                 Toast.makeText(getApplicationContext(), "当前活动还有报名余额", Toast.LENGTH_SHORT).show();
@@ -134,7 +188,7 @@ public class actiActivity extends ListActivity implements AdapterView.OnItemClic
         else{
             Toast.makeText(getApplicationContext(), "不可重复报名哦!", Toast.LENGTH_SHORT).show();
         }
-
+    }
 
 
 
@@ -161,6 +215,17 @@ public class actiActivity extends ListActivity implements AdapterView.OnItemClic
         return super.onOptionsItemSelected(item);
     }
 
+    public void openxiangqing() {
+        //打开活动详情页面，传入参数
+        Intent xiangqing= new Intent(this,XiangqingActivity.class);
+        xiangqing.putExtra("username",username);
+        xiangqing.putExtra("hdname",hdname);
+        xiangqing.putExtra("yue3",yue3);xiangqing.putExtra("ri3",ri3);
+        xiangqing.putExtra("shi3",shi3);xiangqing.putExtra("fen3",fen3);
+        xiangqing.putExtra("month",mMonth);xiangqing.putExtra("day",mDay);
+        xiangqing.putExtra("hour",mHour);xiangqing.putExtra("minute",mMinute);
+        startActivity(xiangqing);
+    }
 
 
 
