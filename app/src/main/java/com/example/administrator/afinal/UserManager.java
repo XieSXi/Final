@@ -887,16 +887,16 @@ public class UserManager {
         db.close();
     }
 
-//
-//    public void quxiaohuodong1(String hdname){
-//        SQLiteDatabase db = dbHelper.getWritableDatabase();
-//        db.delete(TBNAME7,"HDNAME=?", new String[]{hdname});
-//        db.close();
-//    }
-//    public void quxiaohuodong2(String hdname){
-//        SQLiteDatabase db = dbHelper.getWritableDatabase();
-//        db.delete(TBNAME6,"HDNAME=?", new String[]{hdname});
-//        db.close();
-//    }
+
+    public void quxiaohuodong1(String hdname){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.delete(TBNAME6,"HDNAME=?", new String[]{hdname});
+        db.close();
+    }
+    public void quxiaohuodong2(String hdname){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.delete(TBNAME7,"HDNAME=?", new String[]{hdname});
+        db.close();
+    }
 
 }

@@ -224,6 +224,7 @@ public class actiActivity extends ListActivity implements AdapterView.OnItemClic
         xiangqing.putExtra("shi3",shi3);xiangqing.putExtra("fen3",fen3);
         xiangqing.putExtra("month",mMonth);xiangqing.putExtra("day",mDay);
         xiangqing.putExtra("hour",mHour);xiangqing.putExtra("minute",mMinute);
+
         startActivity(xiangqing);
     }
 

@@ -30,7 +30,7 @@ public class XiangqingActivity extends AppCompatActivity {
     private TextView ri;
     private TextView shi;
     private TextView fen;
-    String yue31,ri31,shi31,fen31,mMonth1,mDay1,mHour1,mMinute1;
+//    String yue31,ri31,shi31,fen31,mMonth1,mDay1,mHour1,mMinute1;
     int yue3,ri3,shi3,fen3,mMonth,mDay,mHour,mMinute;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,22 +40,22 @@ public class XiangqingActivity extends AppCompatActivity {
         final Bundle bundle=getIntent().getExtras();    //接收Extras
         hdname=bundle.getString("hdname");
         username=bundle.getString("username");
-        yue31=bundle.getString("yue3");
-        ri31=bundle.getString("ri3");
-        shi31=bundle.getString("shi3");
-        fen31=bundle.getString("fen3");
-        mMonth1=bundle.getString("month");
-        mDay1=bundle.getString("day");
-        mHour1=bundle.getString("hour");
-        mMinute1=bundle.getString("minute");
-        yue3=Integer.parseInt(yue31);
-        ri3=Integer.parseInt(ri31);
-        shi3=Integer.parseInt(shi31);
-        fen3=Integer.parseInt(fen31);
-        mMonth=Integer.parseInt(mMonth1);
-        mDay=Integer.parseInt(mDay1);
-        mHour=Integer.parseInt(mHour1);
-        mMinute=Integer.parseInt(mMinute1);
+        yue3=bundle.getInt("yue3");
+        ri3=bundle.getInt("ri3");
+        shi3=bundle.getInt("shi3");
+        fen3=bundle.getInt("fen3");
+        mMonth=bundle.getInt("month");
+        mDay=bundle.getInt("day");
+        mHour=bundle.getInt("hour");
+        mMinute=bundle.getInt("minute");
+//        yue3=Integer.parseInt(yue31);
+//        ri3=Integer.parseInt(ri31);
+//        shi3=Integer.parseInt(shi31);
+//        fen3=Integer.parseInt(fen31);
+//        mMonth=Integer.parseInt(mMonth1);
+//        mDay=Integer.parseInt(mDay1);
+//        mHour=Integer.parseInt(mHour1);
+//        mMinute=Integer.parseInt(mMinute1);
         baomingbtn= (Button) findViewById(R.id.bmbtn);
         quxiaobtn= (Button) findViewById(R.id.quxiaobtn);
         bmstate=(TextView)findViewById(R.id.bmstate);
@@ -142,15 +142,17 @@ public class XiangqingActivity extends AppCompatActivity {
                     shi.setText(String.valueOf(shi3-mHour));fen.setText(String.valueOf(fen3-mMinute));
                 }
                 else if(shi3>mHour){
-                    shi.setText(String.valueOf(shi3-mHour));fen.setText(String.valueOf(60));
+                    shi.setText(String.valueOf(shi3-mHour-1));fen.setText(String.valueOf(60-mMinute+fen3));
                 }
             }
             else if(ri3>mDay){
-                ri.setText(String.valueOf(mDay-ri3));shi.setText(String.valueOf(24));fen.setText(String.valueOf(60));
+                ri.setText(String.valueOf(ri3-mDay));
+                shi.setText(String.valueOf("-"));fen.setText(String.valueOf("-"));
             }
         }
         else if(yue3>mMonth){
-            ri.setText(String.valueOf(30-mDay+ri3));shi.setText(String.valueOf(24));fen.setText(String.valueOf(60));
+            ri.setText(String.valueOf(30-mDay+ri3));
+            shi.setText(String.valueOf("-"));fen.setText(String.valueOf("-"));
         }
 
 
