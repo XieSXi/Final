@@ -84,21 +84,13 @@ public class orghuodongChakanActivity extends ListActivity implements AdapterVie
     @Override
     public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
         Log.i(TAG,"我发布的活动被短按");
-//        Intent delete= new Intent(this,DeleteActivity.class);
         HashMap<String,String> map1= (HashMap<String, String>) getListView().getItemAtPosition(position);
         hdname=map1.get("name");
         yue=map1.get("yue");
         ri=map1.get("ri");
         shi=map1.get("shi");
         fen=map1.get("fen");
-//        Log.i(TAG,"haname"+hdname);
-//        delete.putExtra("hdname",hdname);
-//        delete.putExtra("orgname",org);
-//        delete.putExtra("yue",yue);
-//        delete.putExtra("ri",ri);
-//        delete.putExtra("shi",shi);
-//        delete.putExtra("fen",fen);
-//        startActivity(delete);
+
         String regEx="[^0-9]";Pattern p = Pattern.compile(regEx);
         Matcher yue1 = p.matcher(yue);String yue2=yue1.replaceAll("").trim();//通过正则表达式获得了字符串中的数字
         Matcher ri1 = p.matcher(ri);String ri2=ri1.replaceAll("").trim();//通过正则表达式获得了字符串中的数字
@@ -110,7 +102,7 @@ public class orghuodongChakanActivity extends ListActivity implements AdapterVie
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         if(yue3<mMonth){
-            timesheng="---";
+            timesheng=" ";
             builder.setTitle("提示").setMessage(tishi1+timesheng+tian+tishi11)
                     .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
@@ -127,7 +119,7 @@ public class orghuodongChakanActivity extends ListActivity implements AdapterVie
         }
         else if(yue3==mMonth){
             if(ri3<mDay){
-                timesheng="---";
+                timesheng=" ";
                 builder.setTitle("提示").setMessage(tishi1+timesheng+tian+tishi11)
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                             @Override
@@ -236,3 +228,62 @@ public class orghuodongChakanActivity extends ListActivity implements AdapterVie
 
 
 }
+
+
+//        quxiaobtn.setOnClickListener(new View.OnClickListener() {
+//@Override
+//public void onClick(View v) {
+//        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+//        Log.i(TAG, "取消报名按钮被点击");
+//        Log.i(TAG, "用户名：" + username + "   报名活动：" + hdname);
+//        UserManager userManager = new UserManager(XiangqingActivity.this);
+//        int chongfu=userManager.chongfubaoming(hdname,username);
+//        Log.i(TAG,"是否报名"+chongfu);
+//        int a=userManager.attendscount1(hdname);
+//        Log.i(TAG,"该活动当前报名人数为"+a);
+//        HdItem item= userManager.findorgtimeByhdname(hdname);
+//        String renshu=item.getHdrenshu();
+//        int renshu1=Integer.parseInt(renshu);
+//        Log.i(TAG,"该活动需求人数为"+renshu1);
+//        int shengyu=renshu1-a;
+//        String shengyu1=String.valueOf(shengyu);
+//        if(chongfu==0){
+//        builder.setTitle("提示").setMessage("您未报名哦！")
+//        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//@Override
+//public void onClick(DialogInterface dialog, int which) {
+////确定按钮的点击事件
+//        }
+//        })
+//        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+//@Override
+//public void onClick(DialogInterface dialogInterface, int i) {
+////取消按钮的点击事件
+//        }
+//        });
+//        }
+//        else{
+//        builder.setTitle("提示").setMessage("您确定要取消报名吗？当前志愿活动余额仅剩"+shengyu1+"个")
+//        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//@Override
+//public void onClick(DialogInterface dialog, int which) {
+////确定按钮的点击事件
+//        UserManager manager=new UserManager(XiangqingActivity.this);
+//        manager.quxiaobaoming(hdname,username);
+//        Log.i(TAG,"已从数据库中删除该attend数据");
+////                                    Toast.makeText(getApplicationContext(), "已取消报名!", Toast.LENGTH_SHORT).show();
+//        }
+//        })
+//        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+//@Override
+//public void onClick(DialogInterface dialogInterface, int i) {
+////取消按钮的点击事件
+//        }
+//        });
+//
+//        }
+//        builder.show();
+//        }
+//
+//
+//        });

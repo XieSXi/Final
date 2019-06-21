@@ -1,6 +1,8 @@
 package com.example.administrator.afinal;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -113,24 +115,60 @@ public class XiangqingActivity extends AppCompatActivity {
 
         });
 
+
         quxiaobtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(XiangqingActivity.this);
                 Log.i(TAG, "取消报名按钮被点击");
                 Log.i(TAG, "用户名：" + username + "   报名活动：" + hdname);
                 UserManager userManager = new UserManager(XiangqingActivity.this);
                 int chongfu=userManager.chongfubaoming(hdname,username);
+                Log.i(TAG,"是否报名"+chongfu);
+                int a=userManager.attendscount1(hdname);
+                Log.i(TAG,"该活动当前报名人数为"+a);
+                HdItem item= userManager.findorgtimeByhdname(hdname);
+                String renshu=item.getHdrenshu();
+                int renshu1=Integer.parseInt(renshu);
+                Log.i(TAG,"该活动需求人数为"+renshu1);
+                int shengyu=renshu1-a;
+                String shengyu1=String.valueOf(shengyu);
                 if(chongfu==0){
-                    Toast.makeText(getApplicationContext(), "您未报名哦!", Toast.LENGTH_SHORT).show();
+                    builder.setTitle("提示").setMessage("您未报名哦！")
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            })
+                            .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            });
                 }
                 else{
-                    userManager.quxiaobaoming(hdname,username);
-                    Log.i(TAG,"已从数据库中删除该attend数据");
-                    Toast.makeText(getApplicationContext(), "已取消报名!", Toast.LENGTH_SHORT).show();
+                    builder.setTitle("提示").setMessage("您确定要取消报名吗？当前志愿活动余额仅剩"+shengyu1+"个")
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    UserManager manager=new UserManager(XiangqingActivity.this);
+                                    manager.quxiaobaoming(hdname,username);
+                                    Log.i(TAG,"已从数据库中删除该attend数据");
+                                    Toast.makeText(getApplicationContext(), "已取消报名", Toast.LENGTH_SHORT).show();
+
+                                }
+                            })
+                            .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    }
+                            });
+
                 }
+                builder.show();
             }
-
-
         });
 
 //相当于做一个报名截止倒计时
@@ -181,4 +219,8 @@ public class XiangqingActivity extends AppCompatActivity {
             listitem.add(map);
         }
     }
+
+
 }
+
+

@@ -118,6 +118,7 @@
         android:text="取消报名"
         android:layout_gravity="center_horizontal"
         android:id="@+id/quxiaobtn"
+        android:onClick="clickquxiao"
         android:textSize="20dp"
         tools:layout_editor_absoluteX="167dp"
         tools:layout_editor_absoluteY="420dp" />

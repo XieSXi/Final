@@ -29,13 +29,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisteroldActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".Register1Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -230,14 +223,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".actiorgActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".DeleteActivity"
-           android:theme="@style/Base.Theme.MaterialComponents.Light.Dialog" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
