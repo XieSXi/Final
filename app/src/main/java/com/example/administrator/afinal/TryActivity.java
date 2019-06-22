@@ -43,7 +43,12 @@ public class TryActivity extends AppCompatActivity {
 //        Log.i(TAG,""+a);
 //        Log.i(TAG,"nihaoa");
 
-
+        UserManager manager=new UserManager(this);
+//        manager.quxiaohuodong1("6464");manager.quxiaohuodong2("6464");
+//        manager.quxiaohuodong1("的多不");manager.quxiaohuodong2("的多不");
+//        manager.quxiaohuodong1("义卖旧书籍");manager.quxiaohuodong2("义卖旧书籍");
+//        manager.quxiaohuodong1("学习雷锋活动");manager.quxiaohuodong2("学习雷锋活动");
+//        manager.quxiaohuodong1("校内清扫");manager.quxiaohuodong2("校内清扫");
 
     }
 }
