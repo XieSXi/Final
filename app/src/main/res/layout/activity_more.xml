@@ -76,22 +76,26 @@
         android:layout_marginTop="-154dp"
         android:text="注：天气数据来源于网络      （中国天气网）" />
 
-    <ImageView
-        android:id="@+id/imageView6"
+    <TextView
+        android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/weatherbtn"
+        android:layout_alignStart="@+id/textView12"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="8dp"
-        app:srcCompat="@mipmap/search" />
+        android:layout_marginStart="-3dp"
+        android:layout_marginTop="101dp"
+        android:text="搜索喜欢的活动吧"
+        android:textSize="20dp" />
 
-    <ImageView
-        android:id="@+id/imageView8"
+    <TextView
+        android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView11"
-        android:layout_marginEnd="-169dp"
-        android:layout_toStartOf="@+id/weatherbtn"
-        app:srcCompat="@mipmap/weather" />
+        android:layout_alignStart="@+id/textView12"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-2dp"
+        android:layout_marginTop="56dp"
+        android:text="想要了解详情？"
+        android:textSize="20dp" />
 
 </RelativeLayout>

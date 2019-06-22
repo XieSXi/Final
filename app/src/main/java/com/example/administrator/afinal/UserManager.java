@@ -899,4 +899,37 @@ public class UserManager {
         db.close();
     }
 
+    public List<String> listhdname(){
+        List<String> hdList = null;
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(TBNAME6, null, null, null, null, null, null);
+        if(cursor!=null){
+            hdList = new ArrayList<String>();
+            while(cursor.moveToNext()){
+                String a=cursor.getString(cursor.getColumnIndex("HDNAME"));
+                hdList.add(a);
+            }
+            cursor.close();
+        }
+        db.close();
+        return hdList;
+    }
+
+    public int existhd (String hdname) {
+        int result =2;
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String sql = "select * from tb_acti where HDNAME=?  ";
+        Cursor cursor = db.rawQuery(sql, new String[] {hdname,});
+        if (cursor.moveToFirst()) {
+            result=1;
+            cursor.close();
+        }
+        else{
+            result=0;
+            cursor.close();
+        }
+        db.close();
+        return result;
+    }
+
 }

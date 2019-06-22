@@ -19,12 +19,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class XiangqingActivity extends AppCompatActivity {
     String hdname;
     String username;
     String TAG="xiangqingye";
     List<Map<String, Object>> listitem = new ArrayList<>(); //存储数据的数组列表
+    List<String> hdnamelist = new ArrayList<>();
+    List a=new ArrayList();
     private Button baomingbtn;
     private Button quxiaobtn;
     private TextView bmstate;
@@ -32,6 +35,7 @@ public class XiangqingActivity extends AppCompatActivity {
     private TextView ri;
     private TextView shi;
     private TextView fen;
+    private TextView text1;private TextView text2;private TextView text3;private TextView text4;private TextView text5;
 //    String yue31,ri31,shi31,fen31,mMonth1,mDay1,mHour1,mMinute1;
     int yue3,ri3,shi3,fen3,mMonth,mDay,mHour,mMinute;
     @Override
@@ -41,6 +45,16 @@ public class XiangqingActivity extends AppCompatActivity {
 
         final Bundle bundle=getIntent().getExtras();    //接收Extras
         hdname=bundle.getString("hdname");
+        UserManager manager=new UserManager(this);
+        int result=manager.existhd(hdname);
+        if (result==0){
+            hdnamelist=manager.listhdname();
+            int c=(int)manager.hdscount();
+            Random rand = new Random();
+            int suiji=rand.nextInt(c);
+            hdname=hdnamelist.get(suiji);
+            Toast.makeText(getApplicationContext(), "该活动不存在，已为您随机推荐活动", Toast.LENGTH_SHORT).show();
+        }
         username=bundle.getString("username");
         yue3=bundle.getInt("yue3",0);
         ri3=bundle.getInt("ri3",0);
@@ -65,6 +79,9 @@ public class XiangqingActivity extends AppCompatActivity {
         ri=(TextView)findViewById(R.id.day);
         shi=(TextView)findViewById(R.id.hour);
         fen=(TextView)findViewById(R.id.minute);
+        text1=(TextView)findViewById(R.id.text1);text2=(TextView)findViewById(R.id.text2);
+        text3=(TextView)findViewById(R.id.text3);text4=(TextView)findViewById(R.id.text4);
+        text5=(TextView)findViewById(R.id.text5);
         HdItem item=new HdItem();
 
         getData();
@@ -172,32 +189,35 @@ public class XiangqingActivity extends AppCompatActivity {
         });
 
 //相当于做一个报名截止倒计时
-        yue.setText(String.valueOf(yue3-mMonth));
-        if(yue3==mMonth) {
-            if(ri3==mDay){
-                ri.setText(String.valueOf(ri3-mDay));
-                if(shi3==mHour){
-                    shi.setText(String.valueOf(shi3-mHour));fen.setText(String.valueOf(fen3-mMinute));
+        if(yue3==0&&ri3==0&&shi3==0&&fen3==0&&mMonth==0&&mDay==0&&mHour==0&&mMinute==0) {
+            text1.setText("");text2.setText("");text3.setText("");text4.setText("");text5.setText("");
+            yue.setText("");ri.setText("");shi.setText("");fen.setText("");
+        }
+        else{
+            yue.setText(String.valueOf(yue3-mMonth));
+            if(yue3==mMonth) {
+                if(ri3==mDay){
+                    ri.setText(String.valueOf(ri3-mDay));
+                    if(shi3==mHour){
+                        shi.setText(String.valueOf(shi3-mHour));fen.setText(String.valueOf(fen3-mMinute));
+                    }
+                    else if(shi3>mHour){
+                        shi.setText(String.valueOf(shi3-mHour-1));fen.setText(String.valueOf(60-mMinute+fen3));
+                    }
                 }
-                else if(shi3>mHour){
-                    shi.setText(String.valueOf(shi3-mHour-1));fen.setText(String.valueOf(60-mMinute+fen3));
+                else if(ri3>mDay){
+                    ri.setText(String.valueOf(ri3-mDay));
+                    shi.setText(String.valueOf("-"));fen.setText(String.valueOf("-"));
                 }
             }
-            else if(ri3>mDay){
-                ri.setText(String.valueOf(ri3-mDay));
+            else if(yue3>mMonth){
+                ri.setText(String.valueOf(30-mDay+ri3));
                 shi.setText(String.valueOf("-"));fen.setText(String.valueOf("-"));
             }
         }
-        else if(yue3>mMonth){
-            ri.setText(String.valueOf(30-mDay+ri3));
-            shi.setText(String.valueOf("-"));fen.setText(String.valueOf("-"));
-        }
-
-
-
-
-
     }
+
+
     private void getData(){
         UserManager manager = new UserManager(this);
         for (HdItem item : manager.showByHdname( hdname)) {

@@ -30,6 +30,7 @@ public class actiActivity extends ListActivity implements AdapterView.OnItemClic
     String yue,ri,shi,fen;
     int[] image_expense = new int[]{R.mipmap.gaokaozy,R.mipmap.dongwuzy,R.mipmap.ertongzy,R.mipmap.jinglaozy,R.mipmap.malasongzy,
             R.mipmap.xueleifengzy,R.mipmap.saodizy,R.mipmap.yimaizy,R.mipmap.any};
+
     int aa=0,bb=0,cc=0,dd=0;
     int yue3,ri3,shi3,fen3,mMonth,mDay,mHour,mMinute;
     @Override

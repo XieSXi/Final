@@ -31,7 +31,7 @@ public class SuoActivity extends AppCompatActivity {
                 Intent intent= new Intent(getApplicationContext(),XiangqingActivity.class);//打开另一个Activity
                 Bundle bundle = new Bundle();
                 bundle.putString("username",username);
-                bundle.putString("hdname","义卖旧书籍");
+                bundle.putString("hdname",content);
                 Log.i(TAG,""+username+content);
                 intent.putExtras(bundle);
                 startActivity(intent);
