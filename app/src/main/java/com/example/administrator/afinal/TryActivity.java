@@ -44,6 +44,7 @@ public class TryActivity extends AppCompatActivity {
 //        Log.i(TAG,"nihaoa");
 
         UserManager manager=new UserManager(this);
+        manager.add3("001","aaa");
 //        manager.quxiaohuodong1("6464");manager.quxiaohuodong2("6464");
 //        manager.quxiaohuodong1("的多不");manager.quxiaohuodong2("的多不");
 //        manager.quxiaohuodong1("义卖旧书籍");manager.quxiaohuodong2("义卖旧书籍");
